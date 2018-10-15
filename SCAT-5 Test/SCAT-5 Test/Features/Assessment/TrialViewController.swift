@@ -43,6 +43,7 @@ class TrialViewController: UIViewController {
             }
             manager.currentTest = assessment
             manager.saveCurrentAssessment()
+            performSegue(withIdentifier: "toHome", sender: self)
         }
     }
 
@@ -58,6 +59,7 @@ class TrialViewController: UIViewController {
         nextTrialButton.setTitle(currentTrial.nextTrialButtonString ?? "NEXT", for: UIControl.State())
         legStanceTestView.balanceTestLabel.text = currentTrial.balanceString
         legStanceTestView.numberOfErrorsLabel.text = "0"
+        legStanceTestView.errorCount = 0
         wordListTableView.reloadData()
         self.navigationItem.title = "Trial \(currentTrial.trialNumber)"
     }

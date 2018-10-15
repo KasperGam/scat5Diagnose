@@ -356,7 +356,7 @@ October September August July June May April March February Ja
                         <outlet property="monthsOfYearTestView" destination="38U-az-lOO" id="WiM-T1-NR3"/>
                         <outlet property="nextTrialButton" destination="0AT-5D-Wkf" id="px2-aM-1nd"/>
                         <outlet property="wordListTableView" destination="X9n-Xe-8p0" id="MlK-Tg-KVx"/>
-                        <segue destination="jpO-53-V9i" kind="custom" customClass="NavigationTransistionSegue" customModule="SCAT_5_Test" customModuleProvider="target" id="p3A-a0-tx0"/>
+                        <segue destination="jpO-53-V9i" kind="custom" identifier="toHome" customClass="NavigationTransistionSegue" customModule="SCAT_5_Test" customModuleProvider="target" id="p3A-a0-tx0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dtV-q3-2kj" userLabel="First Responder" sceneMemberID="firstResponder"/>
