@@ -13,6 +13,7 @@ target 'SCAT-5 Test' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
 
 # Observable
   pod 'Observable'
