@@ -20,6 +20,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         auth = Auth.auth()
+        if let keychain = try? Container.resolve(KeychainManager.self) {
+            emailField.text = keychain.savedUserEmail()
+            passwordField.text = keychain.savedUserPassword()
+        }
     }
 
     @IBAction func loginPressed(_ sender: Any) {
@@ -43,6 +47,9 @@ class LoginViewController: UIViewController {
             else {
                 // Display error
                 return
+            }
+            if let keychain = try? Container.resolve(KeychainManager.self) {
+                keychain.saveUser(email: email, password: password)
             }
 
             guard let manager = try? Container.resolve(DataManager.self) else { return }

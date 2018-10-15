@@ -24,6 +24,8 @@ class StartupManager {
         Container.register(OperationQueue.self) { _ in return OperationQueue() }
 
         Container.register(DataManager.self) { _ in return DataManager() }
+
+        Container.register(KeychainManager.self) { _ in return KeychainManager() }
     }
 
     private func setupFirebase() {

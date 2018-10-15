@@ -102,6 +102,7 @@
 		A799528D2175028200B3BC1E /* Trial4ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A799528C2175028200B3BC1E /* Trial4ViewModel.swift */; };
 		A799528F21751E0A00B3BC1E /* BalanceTestingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A799528E21751E0A00B3BC1E /* BalanceTestingView.xib */; };
 		A799529121751E1800B3BC1E /* BalanceTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A799529021751E1800B3BC1E /* BalanceTestingView.swift */; };
+		A79952932175250F00B3BC1E /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79952922175250F00B3BC1E /* KeychainManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +226,7 @@
 		A799528C2175028200B3BC1E /* Trial4ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trial4ViewModel.swift; sourceTree = "<group>"; };
 		A799528E21751E0A00B3BC1E /* BalanceTestingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceTestingView.xib; sourceTree = "<group>"; };
 		A799529021751E1800B3BC1E /* BalanceTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceTestingView.swift; sourceTree = "<group>"; };
+		A79952922175250F00B3BC1E /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		AC9B846D1F4A15E1EF936213 /* Pods-SCAT-5 Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCAT-5 Test.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCAT-5 Test/Pods-SCAT-5 Test.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -441,6 +443,7 @@
 			children = (
 				A73D8A6B21744E490008E00B /* StartupManager.swift */,
 				A799525A2174598600B3BC1E /* DataManager.swift */,
+				A79952922175250F00B3BC1E /* KeychainManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -883,6 +886,7 @@
 				A73D8A6621744E340008E00B /* ServiceRequestDecorator.swift in Sources */,
 				A79952892175020E00B3BC1E /* Trial2ViewModel.swift in Sources */,
 				A799525F21745A3900B3BC1E /* SCAT5User.swift in Sources */,
+				A79952932175250F00B3BC1E /* KeychainManager.swift in Sources */,
 				A73D8A3121744E330008E00B /* VendorIDFeatureSubject.swift in Sources */,
 				A79952802174FA3600B3BC1E /* WordListTableViewCell.swift in Sources */,
 				A79952872174FF5300B3BC1E /* TrialViewModel.swift in Sources */,
