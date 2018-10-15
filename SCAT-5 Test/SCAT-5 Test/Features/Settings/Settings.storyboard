@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.15" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MYe-d2-vFP">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.9"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Settings-->
+        <scene sceneID="9El-wZ-NcB">
+            <objects>
+                <viewController title="Settings" id="MYe-d2-vFP" customClass="SettingsViewController" customModule="SCAT_5_Test" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ccW-jM-ZoQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="g8J-Dx-5Lc">
+                                <rect key="frame" x="15" y="60" width="345" height="50"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5aJ-Pv-cTi">
+                                        <rect key="frame" x="0.0" y="9.5" width="41.5" height="31"/>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show instructions on how to give an assessment" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9c-cC-eVX">
+                                        <rect key="frame" x="71.5" y="4.5" width="273.5" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="NRa-7d-e6j"/>
+                                    <constraint firstItem="5aJ-Pv-cTi" firstAttribute="centerY" secondItem="g8J-Dx-5Lc" secondAttribute="centerY" id="pBP-9Q-2Pi"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f70-uT-D6M">
+                                <rect key="frame" x="15" y="318.5" width="345" height="30"/>
+                                <color key="backgroundColor" red="0.83901911969999998" green="0.84320610760000003" blue="0.8430820107" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="S9r-oh-vrs"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="kVl-AO-u9n"/>
+                                </constraints>
+                                <state key="normal" title="CHANGE PASSWORD">
+                                    <color key="titleColor" red="0.1725256443" green="0.17256247999999999" blue="0.17252331970000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="ChangePasswordPressed:" destination="MYe-d2-vFP" eventType="touchUpInside" id="i66-a3-SdA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="f70-uT-D6M" firstAttribute="leading" secondItem="AoN-xn-sIJ" secondAttribute="leading" priority="999" constant="15" id="2cN-9U-loS"/>
+                            <constraint firstItem="g8J-Dx-5Lc" firstAttribute="leading" secondItem="AoN-xn-sIJ" secondAttribute="leading" constant="15" id="I95-je-lWB"/>
+                            <constraint firstItem="AoN-xn-sIJ" firstAttribute="trailing" secondItem="g8J-Dx-5Lc" secondAttribute="trailing" constant="15" id="aR8-vg-HRU"/>
+                            <constraint firstItem="g8J-Dx-5Lc" firstAttribute="top" secondItem="AoN-xn-sIJ" secondAttribute="top" constant="40" id="fc6-gh-a8b"/>
+                            <constraint firstItem="AoN-xn-sIJ" firstAttribute="trailing" secondItem="f70-uT-D6M" secondAttribute="trailing" priority="999" constant="15" id="iBL-MC-d6Z"/>
+                            <constraint firstItem="f70-uT-D6M" firstAttribute="centerY" secondItem="ccW-jM-ZoQ" secondAttribute="centerY" id="l1d-Cq-atw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="AoN-xn-sIJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="showInstructionsSwitch" destination="5aJ-Pv-cTi" id="6WK-Uc-7sS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ort-pU-IIF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-119.2" y="115.59220389805098"/>
+        </scene>
+    </scenes>
+</document>

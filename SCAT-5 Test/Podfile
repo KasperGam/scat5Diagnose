@@ -1,0 +1,31 @@
+# Uncomment the next line to define a global platform for your project
+ platform :ios, '10.0'
+
+target 'SCAT-5 Test' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for SCAT-5 Test
+
+
+  # Firebase
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Database'
+
+# Observable
+  pod 'Observable'
+
+# Keychain
+  pod 'KeychainSwift', '~> 11.0'
+
+# Codable Firebase interaction
+  pod 'CodableFirebase'
+
+  target 'SCAT-5 TestTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
