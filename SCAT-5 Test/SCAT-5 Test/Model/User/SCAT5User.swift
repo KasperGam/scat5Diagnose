@@ -16,7 +16,7 @@ protocol SCAT5User {
     var showInstructions: Bool? { get set }
 }
 
-class SCAT5UserFreewheel: SCAT5User, Codable {
+class SCAT5UserFlyweight: SCAT5User, Codable {
     var firstName: String?
     var lastName: String?
     var firebaseUser: User?

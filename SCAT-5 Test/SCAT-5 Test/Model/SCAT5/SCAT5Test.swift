@@ -52,7 +52,7 @@ extension Array where Element == WordRecall {
     }
 }
 
-class SCAT5Freewheel: SCAT5Test, Codable {
+class SCAT5Flyweight: SCAT5Test, Codable {
 
     var playerID: String?
     var testDate: Date?

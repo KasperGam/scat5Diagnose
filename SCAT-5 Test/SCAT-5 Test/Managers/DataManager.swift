@@ -9,7 +9,7 @@
 import Foundation
 import FirebaseAuth
 import FirebaseDatabase
-import Firebase
+import FirebaseFirestore
 import CodableFirebase
 
 class DataManager {
@@ -20,8 +20,13 @@ class DataManager {
 
     let root = Database.database().reference()
 
+    var db = Firestore.firestore()
+
     let decoder = FirebaseDecoder()
     let encoder = FirebaseEncoder()
+
+    let firestoreDecoder = FirestoreDecoder()
+    let firestoreEncoder = FirestoreEncoder()
 
     init() {
         encoder.dateEncodingStrategy = .iso8601
@@ -39,13 +44,13 @@ extension DataManager {
 
         ref.observe(.value) { [weak self] (snapshot) in
             guard let value = snapshot.value else { return }
-            guard let decodedUser = try? self?.decoder.decode(SCAT5UserFreewheel.self, from: value) else { return }
+            guard let decodedUser = try? self?.decoder.decode(SCAT5UserFlyweight.self, from: value) else { return }
             decodedUser?.firebaseUser = user
             self?.currentUser = decodedUser
         }
     }
 
-    func registerUser(user: SCAT5UserFreewheel) {
+    func registerUser(user: SCAT5UserFlyweight) {
 
         guard let firebaseUser = user.firebaseUser else { return }
         let ref = self.root.child("Trainer").child(firebaseUser.uid)
@@ -58,7 +63,7 @@ extension DataManager {
 
     func updateCurrentUser(with user: SCAT5User?) {
         // TODO- Remove cast and just update new freewheel with user values
-        guard let user = user as? SCAT5UserFreewheel else { return }
+        guard let user = user as? SCAT5UserFlyweight else { return }
 
         guard let firebaseUser = user.firebaseUser else { return }
         let ref = self.root.child("Trainer").child(firebaseUser.uid)
@@ -69,6 +74,32 @@ extension DataManager {
         self.currentUser = user
     }
 
+}
+
+// MARK: - Athletes Functions
+
+extension DataManager {
+    func getAthletes(completion: @escaping ([SCAT5Athlete]) -> Void) {
+        let ref = db.collection("Athlete")
+        ref.getDocuments{ (snapshot, error) in
+            guard
+                error == nil,
+                let snapshot = snapshot,
+                !snapshot.isEmpty
+            else {
+                completion([])
+                return
+            }
+            var athletes: [SCAT5AthleteFlyweight] = []
+            for document in snapshot.documents {
+                if let athlete = try? FirestoreDecoder().decode(SCAT5AthleteFlyweight.self, from: document.data()) {
+                    athlete.id = document.documentID
+                    athletes.append(athlete)
+                }
+            }
+            completion(athletes)
+        }
+    }
 }
 
 // MARK: - Save Assessment Functions

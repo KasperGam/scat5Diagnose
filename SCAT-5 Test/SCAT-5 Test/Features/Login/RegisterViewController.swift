@@ -46,7 +46,7 @@ class RegisterViewController: UIViewController {
             // TODO- Show user error
         }
 
-        let newUser = SCAT5UserFreewheel()
+        let newUser = SCAT5UserFlyweight()
         newUser.firstName = firstName
         newUser.lastName = lastName
         newUser.gtName = userName

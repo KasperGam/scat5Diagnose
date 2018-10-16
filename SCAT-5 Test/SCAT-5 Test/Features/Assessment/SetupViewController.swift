@@ -13,12 +13,24 @@ class SetupViewController: UIViewController {
     @IBOutlet weak var athletePickerView: UIPickerView!
     @IBOutlet weak var memoryListPickerView: UIPickerView!
 
+    var athletes: [SCAT5Athlete] = [] {
+        didSet {
+            athletePickerView.reloadAllComponents()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         athletePickerView.dataSource = self
         athletePickerView.delegate = self
         memoryListPickerView.dataSource = self
         memoryListPickerView.delegate = self
+
+        if let manager = try? Container.resolve(DataManager.self) {
+            manager.getAthletes{ [weak self] (allAthletes) in
+                self?.athletes = allAthletes
+            }
+        }
     }
 
     @IBAction func nextPressed(_ sender: Any) {
@@ -26,7 +38,7 @@ class SetupViewController: UIViewController {
     }
 
     private func goToNext() {
-        let currentTest = SCAT5Freewheel()
+        let currentTest = SCAT5Flyweight()
         switch memoryListPickerView.selectedRow(inComponent: 0) {
         case 0:
             currentTest.memoryListUsed = wordList1
@@ -41,7 +53,7 @@ class SetupViewController: UIViewController {
         }
 
         let selectedRow = athletePickerView.selectedRow(inComponent: 0)
-        currentTest.playerID = DummyRosterModel().athleteString(for: IndexPath(row: selectedRow, section: 0))
+        currentTest.playerID = athletes[selectedRow].name
 
         if let manager = try? Container.resolve(DataManager.self) {
             currentTest.trainerID = manager.currentUser?.firebaseUser?.uid
@@ -60,7 +72,7 @@ extension SetupViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == athletePickerView {
-            return DummyRosterModel().numberOfAthletes
+            return athletes.count
         } else if pickerView == memoryListPickerView {
             return 4
         } else {
@@ -70,58 +82,15 @@ extension SetupViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == athletePickerView {
-            return DummyRosterModel().athleteString(for: IndexPath(row: row, section: component))
+            let athlete = athletes[row]
+            let name = athlete.name ?? ""
+            let dob = athlete.dobString() ?? ""
+            return "\(name) \(dob)"
         } else if pickerView == memoryListPickerView {
             return "Word List \(row + 1)"
         } else {
             return ""
         }
     }
-
-}
-
-class DummyRosterModel {
-
-    var numberOfAthletes = 16
-
-    func athleteString(for indexPath: IndexPath) -> String {
-        switch indexPath.row {
-        case 0:
-            return "Taquon Marshall 09/20/1996"
-        case 1:
-            return "Aua Searcy 01/07/1996"
-        case 2:
-            return "Step Durham 06/10/1995"
-        case 3:
-            return "Lamont Simmons 10/07/1995"
-        case 4:
-            return "Devin Smith 09/23/1999"
-        case 5:
-            return "Bruce Jordan-Swilling 09/22/1997"
-        case 6:
-            return "Tre Swilling 03/26/1999"
-        case 7:
-            return "AJ Gray 07/03/1996"
-        case 8:
-            return "Victor Alexander 07/23/1996"
-        case 9:
-            return "Jay Jones 05/17/1998"
-        case 10:
-            return "Lucas Johnson 12/03/1997"
-        case 11:
-            return "Christian Campbell 11/05/1996"
-        case 12:
-            return "Avery Showell 08/12/1999"
-        case 13:
-            return "Chase Martenson 10/29/1995"
-        case 14:
-            return "Ricky Jeune 12/03/1993"
-        case 15:
-            return "Matthew Jordan 03/15/1996"
-        default:
-            return ""
-        }
-    }
-
 
 }
