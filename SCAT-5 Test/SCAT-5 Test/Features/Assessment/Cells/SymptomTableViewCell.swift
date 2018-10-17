@@ -23,7 +23,7 @@ class SymptomTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        severitySlider.isContinuous = false
+
     }
 
     override func prepareForReuse() {
@@ -42,12 +42,13 @@ class SymptomTableViewCell: UITableViewCell {
     }
 
     @IBAction func severityChanged(_ sender: Any) {
-        severityIndicatorLabel.text = String(Int(severitySlider.value))
-        symptom?.severity = Int(severitySlider.value)
+        let value = severitySlider.value.rounded(.toNearestOrEven)
+        severityIndicatorLabel.text = String(Int(value))
+        severitySlider.setValue(value, animated: false)
+        symptom?.severity = Int(value)
         if let symptom = self.symptom {
             delegate?.updateSymptom(symptom)
         }
     }
-
 
 }

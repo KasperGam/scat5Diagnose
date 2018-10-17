@@ -26,13 +26,13 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kLh-Ol-9r5">
                                 <rect key="frame" x="15" y="278.5" width="345" height="30"/>
-                                <color key="backgroundColor" red="0.83901911969999998" green="0.84320610760000003" blue="0.8430820107" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.1831529438" green="0.2328349948" blue="0.63351464270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="Wtb-bx-nvt"/>
                                     <constraint firstAttribute="height" constant="30" id="X7k-fa-dKr"/>
                                 </constraints>
                                 <state key="normal" title="ADMINISTER A TEST">
-                                    <color key="titleColor" red="0.1725256443" green="0.17256247999999999" blue="0.17252331970000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <segue destination="uBS-ko-u2I" kind="show" id="TGT-GM-zC4"/>
@@ -40,13 +40,13 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NU4-Wf-NoG">
                                 <rect key="frame" x="15" y="358.5" width="345" height="30"/>
-                                <color key="backgroundColor" red="0.83901911969999998" green="0.84320610760000003" blue="0.8430820107" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.1831529438" green="0.2328349948" blue="0.63351464270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="LAB-1V-2fC"/>
                                     <constraint firstAttribute="height" constant="30" id="al8-FL-5Pb"/>
                                 </constraints>
                                 <state key="normal" title="SETTINGS">
-                                    <color key="titleColor" red="0.1725256443" green="0.17256247999999999" blue="0.17252331970000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <segue destination="ZoS-6I-LjF" kind="show" id="eDs-86-9xD"/>

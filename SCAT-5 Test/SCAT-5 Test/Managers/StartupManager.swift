@@ -16,6 +16,7 @@ class StartupManager {
 
         setupHoratio()
         setupFirebase()
+        configureNavBar()
 
     }
 
@@ -30,6 +31,21 @@ class StartupManager {
 
     private func setupFirebase() {
         FirebaseApp.configure()
+    }
+
+    private func configureNavBar() {
+
+        let navBarAppearence = UINavigationBar.appearance()
+        navBarAppearence.barTintColor = UIColor(hex: "2F3BA2")
+        navBarAppearence.tintColor = UIColor.white
+        navBarAppearence.isTranslucent = false
+        navBarAppearence.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+
+        let tabBarAppearence = UITabBar.appearance()
+        tabBarAppearence.barTintColor = UIColor(hex: "2F3BA2")
+        tabBarAppearence.tintColor = UIColor.white
+        tabBarAppearence.isTranslucent = false
+        tabBarAppearence.items?.forEach({$0.setBadgeTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State())})
     }
 
 }

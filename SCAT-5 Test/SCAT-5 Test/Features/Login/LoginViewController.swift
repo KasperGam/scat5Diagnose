@@ -19,15 +19,40 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailField.tag = 0
+        passwordField.tag = 1
+        emailField.delegate = self
+        passwordField.delegate = self
         auth = Auth.auth()
         if let keychain = try? Container.resolve(KeychainManager.self) {
             emailField.text = keychain.savedUserEmail()
             passwordField.text = keychain.savedUserPassword()
         }
+        updateLoginButton()
     }
 
     @IBAction func loginPressed(_ sender: Any) {
         login()
+    }
+
+    @IBAction func editingChanged(_ sender: Any) {
+        updateLoginButton()
+    }
+
+    @IBAction func dismissKeyboard(_ sender: Any) {
+        view.endEditing(true)
+    }
+
+
+    private func updateLoginButton() {
+        guard
+            let email = emailField.text,
+            let pass = passwordField.text
+        else {
+            loginButton.isEnabled = false
+            return
+        }
+        loginButton.isEnabled = email.isValidEmail && pass != ""
     }
 
     private func login() {
@@ -46,6 +71,7 @@ class LoginViewController: UIViewController {
                 error == nil
             else {
                 // Display error
+                self?.showAuthError(error)
                 return
             }
             if let keychain = try? Container.resolve(KeychainManager.self) {
@@ -53,10 +79,35 @@ class LoginViewController: UIViewController {
             }
 
             guard let manager = try? Container.resolve(DataManager.self) else { return }
-            manager.loginUser(user: user)
-            self?.performSegue(withIdentifier: "loginToHome", sender: self)
+            manager.loginUser(user: user, completion: { (success) in
+                if success {
+                    self?.performSegue(withIdentifier: "loginToHome", sender: self)
+                } else {
+                    try? self?.auth?.signOut()
+                    self?.showAuthError(nil)
+                }
+            })
         }
-
     }
 
+    private func showAuthError(_ error: Error?) {
+        let errorAlert: UIAlertController = UIAlertController(title: "An Error Occured", message: error?.localizedDescription ?? "No user found", preferredStyle: .alert)
+        errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            errorAlert.dismiss(animated: true, completion: nil)}))
+        present(errorAlert, animated: true, completion: nil)
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if let newField = self.view.viewWithTag(textField.tag + 1) as? UITextField {
+            newField.becomeFirstResponder()
+        } else {
+            if loginButton.isEnabled {
+                login()
+            }
+        }
+        return true
+    }
 }

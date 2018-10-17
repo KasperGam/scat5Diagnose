@@ -29,4 +29,9 @@ class KeychainManager {
         return KeychainSwift().get(passKey)
     }
 
+    func resetUser() {
+        let keychain = KeychainSwift()
+        keychain.delete(emailKey)
+        keychain.delete(passKey)
+    }
 }

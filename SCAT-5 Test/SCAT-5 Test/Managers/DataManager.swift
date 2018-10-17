@@ -38,44 +38,48 @@ class DataManager {
 // MARK: - Save User Functions
 extension DataManager {
 
-    func loginUser(user: User) {
+    func loginUser(user: User, completion: @escaping (Bool) -> Void) {
 
         let ref = self.root.child("Trainer").child(user.uid)
 
         ref.observe(.value) { [weak self] (snapshot) in
-            guard let value = snapshot.value else { return }
-            guard let decodedUser = try? self?.decoder.decode(SCAT5UserFlyweight.self, from: value) else { return }
+            guard let value = snapshot.value else { completion(false); return }
+            guard let decodedUser = try? self?.decoder.decode(SCAT5UserFlyweight.self, from: value) else { completion(false); return }
             decodedUser?.firebaseUser = user
             self?.currentUser = decodedUser
+            completion(true)
         }
     }
 
-    func registerUser(user: SCAT5User) {
+    func registerUser(user: SCAT5User) -> Bool {
         var userFlyweight = SCAT5UserFlyweight()
         userFlyweight.update(with: user)
 
-        guard let firebaseUser = user.firebaseUser else { return }
+        guard let firebaseUser = user.firebaseUser else { return false }
         let ref = self.root.child("Trainer").child(firebaseUser.uid)
 
-        guard let encodedUser = try? encoder.encode(userFlyweight) else { return }
+        guard let encodedUser = try? encoder.encode(userFlyweight) else { return false }
 
         ref.setValue(encodedUser)
         self.currentUser = user
+        return true
     }
 
-    func updateCurrentUser(with user: SCAT5User?) {
-        guard let user = user else { return }
+    func updateCurrentUser(with user: SCAT5User?) -> Bool {
+        guard let user = user else { return false }
 
         var userFlyweight = SCAT5UserFlyweight()
         userFlyweight.update(with: user)
 
-        guard let firebaseUser = user.firebaseUser else { return }
+        guard let firebaseUser = user.firebaseUser else { return false }
         let ref = self.root.child("Trainer").child(firebaseUser.uid)
 
-        guard let encodedUser = try? encoder.encode(userFlyweight) else { return }
+        guard let encodedUser = try? encoder.encode(userFlyweight) else { return false }
 
         ref.setValue(encodedUser)
         self.currentUser = user
+
+        return true
     }
 
 }

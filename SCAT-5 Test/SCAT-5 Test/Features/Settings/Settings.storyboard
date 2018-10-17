@@ -38,37 +38,66 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f70-uT-D6M">
                                 <rect key="frame" x="15" y="318.5" width="345" height="30"/>
-                                <color key="backgroundColor" red="0.83901911969999998" green="0.84320610760000003" blue="0.8430820107" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.1831529438" green="0.2328349948" blue="0.63351464270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="S9r-oh-vrs"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="kVl-AO-u9n"/>
                                 </constraints>
                                 <state key="normal" title="CHANGE PASSWORD">
-                                    <color key="titleColor" red="0.1725256443" green="0.17256247999999999" blue="0.17252331970000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="ChangePasswordPressed:" destination="MYe-d2-vFP" eventType="touchUpInside" id="i66-a3-SdA"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VE0-iw-hHh">
+                                <rect key="frame" x="15" y="368.5" width="345" height="30"/>
+                                <color key="backgroundColor" red="0.1831529438" green="0.2328349948" blue="0.63351464270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="2jU-jT-bnD"/>
+                                    <constraint firstAttribute="height" constant="30" id="zJr-oO-k85"/>
+                                </constraints>
+                                <state key="normal" title="SIGN OUT">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signOutPressed:" destination="MYe-d2-vFP" eventType="touchUpInside" id="Xys-Q0-5vY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="VE0-iw-hHh" firstAttribute="top" secondItem="f70-uT-D6M" secondAttribute="bottom" constant="20" id="0fx-sx-mE5"/>
                             <constraint firstItem="f70-uT-D6M" firstAttribute="leading" secondItem="AoN-xn-sIJ" secondAttribute="leading" priority="999" constant="15" id="2cN-9U-loS"/>
+                            <constraint firstItem="f70-uT-D6M" firstAttribute="centerX" secondItem="ccW-jM-ZoQ" secondAttribute="centerX" id="4ln-3c-9lh"/>
+                            <constraint firstItem="VE0-iw-hHh" firstAttribute="leading" secondItem="AoN-xn-sIJ" secondAttribute="leading" priority="999" constant="15" id="8Rb-dk-hNE"/>
+                            <constraint firstItem="AoN-xn-sIJ" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="VE0-iw-hHh" secondAttribute="bottom" constant="20" id="BcV-56-7x1"/>
                             <constraint firstItem="g8J-Dx-5Lc" firstAttribute="leading" secondItem="AoN-xn-sIJ" secondAttribute="leading" constant="15" id="I95-je-lWB"/>
                             <constraint firstItem="AoN-xn-sIJ" firstAttribute="trailing" secondItem="g8J-Dx-5Lc" secondAttribute="trailing" constant="15" id="aR8-vg-HRU"/>
+                            <constraint firstItem="VE0-iw-hHh" firstAttribute="centerX" secondItem="ccW-jM-ZoQ" secondAttribute="centerX" id="ee5-zj-7dm"/>
+                            <constraint firstItem="AoN-xn-sIJ" firstAttribute="trailing" secondItem="VE0-iw-hHh" secondAttribute="trailing" priority="999" constant="15" id="euW-Tl-3qM"/>
                             <constraint firstItem="g8J-Dx-5Lc" firstAttribute="top" secondItem="AoN-xn-sIJ" secondAttribute="top" constant="40" id="fc6-gh-a8b"/>
                             <constraint firstItem="AoN-xn-sIJ" firstAttribute="trailing" secondItem="f70-uT-D6M" secondAttribute="trailing" priority="999" constant="15" id="iBL-MC-d6Z"/>
-                            <constraint firstItem="f70-uT-D6M" firstAttribute="centerY" secondItem="ccW-jM-ZoQ" secondAttribute="centerY" id="l1d-Cq-atw"/>
+                            <constraint firstItem="f70-uT-D6M" firstAttribute="centerY" secondItem="ccW-jM-ZoQ" secondAttribute="centerY" priority="999" id="l1d-Cq-atw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AoN-xn-sIJ"/>
                     </view>
                     <connections>
                         <outlet property="showInstructionsSwitch" destination="5aJ-Pv-cTi" id="6WK-Uc-7sS"/>
+                        <segue destination="0hj-3g-NMS" kind="custom" identifier="signOutSegue" customClass="NavigationTransistionSegue" customModule="SCAT_5_Test" customModuleProvider="target" id="Uiz-6A-EEh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ort-pU-IIF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-119.2" y="115.59220389805098"/>
+        </scene>
+        <!--LoginRegister-->
+        <scene sceneID="OY5-sK-XlU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LoginRegister" id="0hj-3g-NMS" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w7z-J7-ZMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="481" y="115"/>
         </scene>
     </scenes>
 </document>

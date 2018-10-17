@@ -70,6 +70,8 @@
 		A73D8A6C21744E490008E00B /* StartupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D8A6B21744E490008E00B /* StartupManager.swift */; };
 		A75B2A10217548750054528A /* SCAT5Athlete.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75B2A0F217548750054528A /* SCAT5Athlete.swift */; };
 		A761BB9621779103007E6D60 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761BB9521779103007E6D60 /* DateExtensions.swift */; };
+		A761BB9C2177B79F007E6D60 /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761BB9B2177B79F007E6D60 /* UINavigationControllerExtensions.swift */; };
+		A761BB9E2177B86F007E6D60 /* TogglableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761BB9D2177B86F007E6D60 /* TogglableButton.swift */; };
 		A799523F2174517A00B3BC1E /* LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A799523E2174517A00B3BC1E /* LoginRegister.storyboard */; };
 		A79952412174557500B3BC1E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79952402174557500B3BC1E /* LoginViewController.swift */; };
 		A79952482174571A00B3BC1E /* RoundRectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79952442174571900B3BC1E /* RoundRectButton.swift */; };
@@ -197,6 +199,9 @@
 		A75B2A0F217548750054528A /* SCAT5Athlete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCAT5Athlete.swift; sourceTree = "<group>"; };
 		A761BB942176EDE5007E6D60 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		A761BB9521779103007E6D60 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		A761BB9B2177B79F007E6D60 /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
+		A761BB9D2177B86F007E6D60 /* TogglableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogglableButton.swift; sourceTree = "<group>"; };
+		A761BB9F2177BDFA007E6D60 /* SCAT-5 Test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SCAT-5 Test.entitlements"; sourceTree = "<group>"; };
 		A799523E2174517A00B3BC1E /* LoginRegister.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginRegister.storyboard; sourceTree = "<group>"; };
 		A79952402174557500B3BC1E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A79952442174571900B3BC1E /* RoundRectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundRectButton.swift; sourceTree = "<group>"; };
@@ -290,6 +295,7 @@
 		A73D89C721744D4C0008E00B /* SCAT-5 Test */ = {
 			isa = PBXGroup;
 			children = (
+				A761BB9F2177BDFA007E6D60 /* SCAT-5 Test.entitlements */,
 				A799526621745DFE00B3BC1E /* App Delegate */,
 				A799526521745DEC00B3BC1E /* Resources */,
 				A799525C21745A2500B3BC1E /* Model */,
@@ -491,6 +497,7 @@
 				A79952472174571A00B3BC1E /* CircleImageView.swift */,
 				A79952462174571900B3BC1E /* KeyboardReactiveScrollView.swift */,
 				A79952442174571900B3BC1E /* RoundRectButton.swift */,
+				A761BB9D2177B86F007E6D60 /* TogglableButton.swift */,
 				A79952452174571900B3BC1E /* UnderlineTextField.swift */,
 			);
 			path = Views;
@@ -513,6 +520,7 @@
 				A79952532174573600B3BC1E /* UIApplicationExtensions.swift */,
 				A79952542174573600B3BC1E /* UIColorExtensions.swift */,
 				A761BB9521779103007E6D60 /* DateExtensions.swift */,
+				A761BB9B2177B79F007E6D60 /* UINavigationControllerExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -677,6 +685,14 @@
 				TargetAttributes = {
 					A73D89C421744D4C0008E00B = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					A73D89DB21744D4D0008E00B = {
 						CreatedOnToolsVersion = 10.1;
@@ -834,8 +850,10 @@
 				A79952492174571A00B3BC1E /* UnderlineTextField.swift in Sources */,
 				A73D8A4821744E340008E00B /* LocationCondition.swift in Sources */,
 				A73D8A5E21744E340008E00B /* JSONServiceResponseProcessor.swift in Sources */,
+				A761BB9E2177B86F007E6D60 /* TogglableButton.swift in Sources */,
 				A799528B2175026F00B3BC1E /* Trial3ViewModel.swift in Sources */,
 				A73D8A3821744E330008E00B /* PhotosCondition.swift in Sources */,
+				A761BB9C2177B79F007E6D60 /* UINavigationControllerExtensions.swift in Sources */,
 				A79952582174573600B3BC1E /* UIApplicationExtensions.swift in Sources */,
 				A73D8A6C21744E490008E00B /* StartupManager.swift in Sources */,
 				A73D8A3E21744E330008E00B /* PassbookCondition.swift in Sources */,
@@ -1079,6 +1097,7 @@
 			baseConfigurationReference = AC9B846D1F4A15E1EF936213 /* Pods-SCAT-5 Test.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SCAT-5 Test/SCAT-5 Test.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5XK7JHWX2X;
 				INFOPLIST_FILE = "SCAT-5 Test/Info.plist";
@@ -1100,6 +1119,7 @@
 			baseConfigurationReference = 44FAA2E7870B56E9B8EBE352 /* Pods-SCAT-5 Test.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SCAT-5 Test/SCAT-5 Test.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5XK7JHWX2X;
 				INFOPLIST_FILE = "SCAT-5 Test/Info.plist";

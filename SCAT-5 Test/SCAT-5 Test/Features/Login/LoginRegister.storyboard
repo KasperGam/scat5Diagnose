@@ -42,22 +42,38 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <connections>
+                                            <action selector="editingChanged:" destination="uZm-4d-YPg" eventType="editingChanged" id="WFO-J9-rNg"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="now-WE-FvQ">
                                         <rect key="frame" x="0.0" y="50" width="345" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
+                                        <connections>
+                                            <action selector="editingChanged:" destination="uZm-4d-YPg" eventType="editingChanged" id="cQm-bU-oo6"/>
+                                        </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m35-2I-hU0">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m35-2I-hU0" customClass="ToggleableButton" customModule="SCAT_5_Test" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="100" width="345" height="30"/>
-                                        <color key="backgroundColor" red="0.83901911973953247" green="0.84320610761642456" blue="0.8430820107460022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.1831529438" green="0.2328349948" blue="0.63351464270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="xvD-QK-kC3"/>
                                         </constraints>
                                         <state key="normal" title="LOGIN">
-                                            <color key="titleColor" red="0.17252564430236816" green="0.17256247997283936" blue="0.17252331972122192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="0.99019607840000001" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <state key="disabled" title="LOGIN"/>
+                                        <state key="selected" title="LOGIN"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="disabledBackgroundColor">
+                                                <color key="value" red="0.83901911969999998" green="0.84320610760000003" blue="0.8430820107" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                                <color key="value" red="0.1831529438495636" green="0.23283499479293823" blue="0.6335146427154541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="loginPressed:" destination="uZm-4d-YPg" eventType="touchUpInside" id="xjL-fw-QKd"/>
                                         </connections>
@@ -84,6 +100,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="aNk-fk-3BI" firstAttribute="top" secondItem="G46-3o-UnP" secondAttribute="top" constant="40" id="0OV-bV-nHf"/>
                             <constraint firstItem="o95-vf-23v" firstAttribute="top" secondItem="aNk-fk-3BI" secondAttribute="bottom" constant="8" id="4VD-tV-xOR"/>
@@ -95,6 +112,9 @@
                             <constraint firstItem="aNk-fk-3BI" firstAttribute="centerX" secondItem="PE8-OD-y6D" secondAttribute="centerX" id="zoa-zm-D7v"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G46-3o-UnP"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="S0A-7J-gRp" appends="YES" id="lFS-1b-QEG"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="Pjx-eH-s9d"/>
                     <connections>
@@ -105,6 +125,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgc-pV-PAn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="S0A-7J-gRp">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="uZm-4d-YPg" id="R4l-FU-Xdp"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-185" y="124"/>
         </scene>
@@ -126,47 +151,77 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="name"/>
+                                                <connections>
+                                                    <action selector="editingChanged:" destination="ajm-1p-oLw" eventType="editingChanged" id="SBM-5B-sax"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7eV-on-Mnz">
                                                 <rect key="frame" x="0.0" y="50" width="345" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="family-name"/>
+                                                <connections>
+                                                    <action selector="editingChanged:" destination="ajm-1p-oLw" eventType="editingChanged" id="zVf-7X-kQ4"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="GT Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xUw-k6-wt3">
                                                 <rect key="frame" x="0.0" y="100" width="345" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" textContentType="username"/>
+                                                <connections>
+                                                    <action selector="editingChanged:" destination="ajm-1p-oLw" eventType="editingChanged" id="8MG-z5-pEm"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ACp-yW-dtN">
                                                 <rect key="frame" x="0.0" y="150" width="345" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
+                                                <connections>
+                                                    <action selector="editingChanged:" destination="ajm-1p-oLw" eventType="editingChanged" id="joY-V5-2L6"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fkY-1a-g3S">
                                                 <rect key="frame" x="0.0" y="200" width="345" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" secureTextEntry="YES" textContentType="new-password">
+                                                    <passwordRules key="passwordRules" passwordRulesDescriptor="Must be at least 6 characters"/>
+                                                </textInputTraits>
+                                                <connections>
+                                                    <action selector="editingChanged:" destination="ajm-1p-oLw" eventType="editingChanged" id="GhF-Mc-npY"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vHe-RV-OGV">
                                                 <rect key="frame" x="0.0" y="250" width="345" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
+                                                <connections>
+                                                    <action selector="editingChanged:" destination="ajm-1p-oLw" eventType="editingChanged" id="0yx-Hf-ptF"/>
+                                                </connections>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qia-zJ-OEx">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qia-zJ-OEx" customClass="ToggleableButton" customModule="SCAT_5_Test" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="300" width="345" height="30"/>
-                                                <color key="backgroundColor" red="0.83901911969999998" green="0.84320610760000003" blue="0.8430820107" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.1831529438" green="0.2328349948" blue="0.63351464270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="cU9-5B-1Bd"/>
                                                 </constraints>
                                                 <state key="normal" title="REGISTER">
-                                                    <color key="titleColor" red="0.1725256443" green="0.17256247999999999" blue="0.17252331970000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" red="0.99019607840000001" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <state key="disabled" title="REGISTER"/>
+                                                <state key="highlighted" title="REGISTER"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                                        <color key="value" red="0.1831529438" green="0.2328349948" blue="0.63351464270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledBackgroundColor">
+                                                        <color key="value" red="0.83901911969999998" green="0.84320610760000003" blue="0.8430820107" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="registerPressed:" destination="ajm-1p-oLw" eventType="touchUpInside" id="3vH-Yj-VEC"/>
                                                 </connections>
@@ -217,6 +272,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ofO-GN-YCA"/>
+        <segue reference="qJ9-xo-Oty"/>
     </inferredMetricsTieBreakers>
 </document>

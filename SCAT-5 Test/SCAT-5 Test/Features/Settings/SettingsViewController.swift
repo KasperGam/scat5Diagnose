@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SettingsViewController: UIViewController {
 
@@ -27,13 +28,26 @@ class SettingsViewController: UIViewController {
 
         user?.showInstructions = showInstructionsSwitch.isOn
         guard let manager = try? Container.resolve(DataManager.self) else { return }
-        manager.updateCurrentUser(with: user)
+        _ = manager.updateCurrentUser(with: user)
     }
 
 
 
     @IBAction func ChangePasswordPressed(_ sender: Any) {
         // TODO- Implement Change Password
+    }
+
+    @IBAction func signOutPressed(_ sender: Any) {
+        let auth = Auth.auth()
+        try? auth.signOut()
+        if let keychain = try? Container.resolve(KeychainManager.self) {
+            keychain.resetUser()
+        }
+
+        if let manager = try? Container.resolve(DataManager.self) {
+            manager.currentUser = nil
+        }
+        performSegue(withIdentifier: "signOutSegue", sender: self)
     }
 
 }
