@@ -16,6 +16,16 @@ protocol SCAT5User {
     var showInstructions: Bool? { get set }
 }
 
+extension SCAT5User {
+    mutating func update(with model: SCAT5User) {
+        firstName = model.firstName ?? firstName
+        lastName = model.lastName ?? lastName
+        firebaseUser = model.firebaseUser ?? firebaseUser
+        gtName = model.gtName ?? gtName
+        showInstructions = model.showInstructions ?? showInstructions
+    }
+}
+
 class SCAT5UserFlyweight: SCAT5User, Codable {
     var firstName: String?
     var lastName: String?
@@ -28,6 +38,7 @@ class SCAT5UserFlyweight: SCAT5User, Codable {
         case lastName
         case gatechUsername
         case instructionsShown
+        case id
     }
 
     func encode(to encoder: Encoder) throws {
@@ -36,6 +47,9 @@ class SCAT5UserFlyweight: SCAT5User, Codable {
         try container.encodeIfPresent(lastName, forKey: .lastName)
         try container.encodeIfPresent(gtName, forKey: .gatechUsername)
         try container.encodeIfPresent(showInstructions, forKey: .instructionsShown)
+        if let user = firebaseUser {
+            try container.encode(user.uid, forKey: .id)
+        }
     }
 
     required init(from decoder: Decoder) throws {

@@ -11,6 +11,7 @@ import Foundation
 public typealias WordList = [String]
 
 protocol SCAT5Test {
+
     var playerID: String? { get set }
     var testDate: Date? { get set }
     var testID: String? { get set }
@@ -24,6 +25,24 @@ protocol SCAT5Test {
     var memoryListUsed: WordList? { get set }
     var symptoms: [Symptom] { get set }
     var trialWordRecall: [Int: [WordRecall]] { get set }
+}
+
+extension SCAT5Test {
+    mutating func update(with model: SCAT5Test) {
+        playerID = model.playerID ?? playerID
+        testDate = model.testDate ?? testDate
+        testID = model.testID ?? testID
+        trainerID = model.trainerID ?? trainerID
+        trial1DoubleLegErrors = model.trial1DoubleLegErrors ?? trial1DoubleLegErrors
+        trial2MemoryScore = model.trial2MemoryScore ?? trial2MemoryScore
+        trial2SingleLegErrors = model.trial2SingleLegErrors ?? trial2SingleLegErrors
+        trial3TandemLegErrors = model.trial3TandemLegErrors ?? trial3TandemLegErrors
+        trial3MemoryScore = model.trial3MemoryScore ?? trial3MemoryScore
+        trial4MemoryScore = model.trial4MemoryScore ?? trial4MemoryScore
+        memoryListUsed = model.memoryListUsed ?? memoryListUsed
+        symptoms = model.symptoms.isEmpty ? model.symptoms : symptoms
+        trialWordRecall = model.trialWordRecall.isEmpty ? model.trialWordRecall : trialWordRecall
+    }
 }
 
 // MARK: - Wordlists
@@ -68,6 +87,49 @@ class SCAT5Flyweight: SCAT5Test, Codable {
     var symptoms: [Symptom] = []
     var trialWordRecall: [Int : [WordRecall]] = [:]
 
+    enum CodingKeys: String, CodingKey {
+        case playerID
+        case testDate
+        case testID
+        case trainerID
+        case trial1DoubleLegErrors
+        case trial2MemoryScore
+        case trial2SingleLegErrors
+        case trial3MemoryScore
+        case trial3TandemLegErrors
+        case trial4MemoryScore
+    }
+
     init() {}
+
+    required init(decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        playerID = try container.decodeIfPresent(String.self, forKey: .playerID)
+        if let dateStr = try container.decodeIfPresent(String.self, forKey: .testDate) {
+            testDate = Date(fromMMddYYYYHHmma: dateStr)
+        }
+        testID = try container.decodeIfPresent(String.self, forKey: .testID)
+        trainerID = try container.decodeIfPresent(String.self, forKey: .trainerID)
+        trial1DoubleLegErrors = try container.decodeIfPresent(Int.self, forKey: .trial1DoubleLegErrors)
+        trial2MemoryScore = try container.decodeIfPresent(Int.self, forKey: .trial2MemoryScore)
+        trial2SingleLegErrors = try container.decodeIfPresent(Int.self, forKey: .trial2SingleLegErrors)
+        trial3MemoryScore = try container.decodeIfPresent(Int.self, forKey: .trial3MemoryScore)
+        trial3TandemLegErrors = try container.decodeIfPresent(Int.self, forKey: .trial3TandemLegErrors)
+        trial4MemoryScore = try container.decodeIfPresent(Int.self, forKey: .trial4MemoryScore)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(playerID, forKey: .playerID)
+        try container.encodeIfPresent(testID, forKey: .testID)
+        try container.encodeIfPresent(trainerID, forKey: .trainerID)
+        try container.encodeIfPresent(trial1DoubleLegErrors, forKey: .trial1DoubleLegErrors)
+        try container.encodeIfPresent(trial2MemoryScore, forKey: .trial2MemoryScore)
+        try container.encodeIfPresent(trial2SingleLegErrors, forKey: .trial2SingleLegErrors)
+        try container.encodeIfPresent(trial3MemoryScore, forKey: .trial3MemoryScore)
+        try container.encodeIfPresent(trial3TandemLegErrors, forKey: .trial3TandemLegErrors)
+        try container.encodeIfPresent(trial4MemoryScore, forKey: .trial4MemoryScore)
+        try container.encodeIfPresent(testDate?.getMMddYYYYHHmma(), forKey: .testDate)
+    }
 
 }

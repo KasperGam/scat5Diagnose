@@ -31,13 +31,14 @@ class TrialViewController: UIViewController {
     }
 
     @IBAction func nextTrialPressed(_ sender: Any) {
+        if var test = assessment {
+            currentTrial.updateAssessment(&test, wordList: currentWordList, calendarRecall: monthsOfYearRecallSwitch.isOn, balenceScore: 0)
+        }
         if let nextTrial = currentTrial.getNextTrial() {
-            if var test = assessment {
-                currentTrial.updateAssessment(&test, wordList: currentWordList, calendarRecall: monthsOfYearRecallSwitch.isOn, balenceScore: 0)
-            }
             currentTrial = nextTrial
             setupForCurrentTrial()
         } else {
+
             guard let manager = try? Container.resolve(DataManager.self) else {
                 return
             }

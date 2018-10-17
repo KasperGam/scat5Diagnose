@@ -16,6 +16,14 @@ protocol SCAT5Athlete {
     func dobString() -> String?
 }
 
+extension SCAT5Athlete {
+    mutating func update(with model: SCAT5Athlete) {
+        dob = model.dob ?? dob
+        id = model.id ?? id
+        name = model.name ?? name
+    }
+}
+
 class SCAT5AthleteFlyweight: SCAT5Athlete, Codable {
     var dob: Date?
     var id: String?
@@ -42,6 +50,8 @@ class SCAT5AthleteFlyweight: SCAT5Athlete, Codable {
         case name
     }
 
+    init() {}
+
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         if let dateStr = try? container.decode(String.self, forKey: .DOB) {
@@ -57,5 +67,11 @@ class SCAT5AthleteFlyweight: SCAT5Athlete, Codable {
             try container.encode(dateStr, forKey: .DOB)
         }
         try container.encodeIfPresent(name, forKey: .name)
+    }
+
+    func hashedID() -> String {
+        guard let name = name, let dob = dobString() else { return ""}
+        let str = name + " " + dob
+        return str.sha256()
     }
 }

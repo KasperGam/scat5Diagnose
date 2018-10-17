@@ -29,7 +29,7 @@ class DataManager {
     let firestoreEncoder = FirestoreEncoder()
 
     init() {
-        encoder.dateEncodingStrategy = .iso8601
+        encoder.dateEncodingStrategy = .formatted(Date.formatterForMMddYYYYHHmma)
     }
 
 }
@@ -50,25 +50,29 @@ extension DataManager {
         }
     }
 
-    func registerUser(user: SCAT5UserFlyweight) {
+    func registerUser(user: SCAT5User) {
+        var userFlyweight = SCAT5UserFlyweight()
+        userFlyweight.update(with: user)
 
         guard let firebaseUser = user.firebaseUser else { return }
         let ref = self.root.child("Trainer").child(firebaseUser.uid)
 
-        guard let encodedUser = try? encoder.encode(user) else { return }
+        guard let encodedUser = try? encoder.encode(userFlyweight) else { return }
 
         ref.setValue(encodedUser)
         self.currentUser = user
     }
 
     func updateCurrentUser(with user: SCAT5User?) {
-        // TODO- Remove cast and just update new freewheel with user values
-        guard let user = user as? SCAT5UserFlyweight else { return }
+        guard let user = user else { return }
+
+        var userFlyweight = SCAT5UserFlyweight()
+        userFlyweight.update(with: user)
 
         guard let firebaseUser = user.firebaseUser else { return }
         let ref = self.root.child("Trainer").child(firebaseUser.uid)
 
-        guard let encodedUser = try? encoder.encode(user) else { return }
+        guard let encodedUser = try? encoder.encode(userFlyweight) else { return }
 
         ref.setValue(encodedUser)
         self.currentUser = user
@@ -100,6 +104,16 @@ extension DataManager {
             completion(athletes)
         }
     }
+
+    func addAthlete(athlete: SCAT5Athlete) {
+        var athleteFlyweight = SCAT5AthleteFlyweight()
+        athleteFlyweight.update(with: athlete)
+        let ref = db.collection("Athlete")
+
+        if let value = try? firestoreEncoder.encode(athleteFlyweight) {
+            ref.addDocument(data: value)
+        }
+    }
 }
 
 // MARK: - Save Assessment Functions
@@ -107,10 +121,35 @@ extension DataManager {
 extension DataManager {
 
     func saveCurrentAssessment() {
-        guard let test = currentTest else { return }
+        guard var test = currentTest else { return }
         // TODO - Save Test to Firebase
 
+        guard var id = test.playerID?.sha256() else { return }
+        guard let trainerID = test.trainerID else { return }
+        id = id.uppercased()
+        test.playerID = id
+
+        var ref = root.child("SymptomResult").child(id)
+        let now = Date.currentTimeInCurrentTimeZone()
+
+        let symptomResultID = ref.childByAutoId().key!
+        let symptomResult = SCAT5SymptomResult(from: test.symptoms, playerID: id, trainerID: trainerID, testID: symptomResultID, testDate: now)
+
+        if let value = try? encoder.encode(symptomResult) {
+            ref.child(symptomResultID).setValue(value)
+        }
+
+        ref = root.child("TestResult").child(id)
+        let testResultID = symptomResultID
+
+        test.testDate = now
+        test.testID = testResultID
+
+        if let test = test as? SCAT5Flyweight,
+            let value = try? encoder.encode(test) {
+
+            ref.child(testResultID).setValue(value)
+        }
         currentTest = nil
     }
-
 }

@@ -69,6 +69,7 @@
 		A73D8A6921744E340008E00B /* ServiceEndpointPathTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D8A2E21744E330008E00B /* ServiceEndpointPathTransformer.swift */; };
 		A73D8A6C21744E490008E00B /* StartupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D8A6B21744E490008E00B /* StartupManager.swift */; };
 		A75B2A10217548750054528A /* SCAT5Athlete.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75B2A0F217548750054528A /* SCAT5Athlete.swift */; };
+		A761BB9621779103007E6D60 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761BB9521779103007E6D60 /* DateExtensions.swift */; };
 		A799523F2174517A00B3BC1E /* LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A799523E2174517A00B3BC1E /* LoginRegister.storyboard */; };
 		A79952412174557500B3BC1E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79952402174557500B3BC1E /* LoginViewController.swift */; };
 		A79952482174571A00B3BC1E /* RoundRectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79952442174571900B3BC1E /* RoundRectButton.swift */; };
@@ -194,6 +195,8 @@
 		A73D8A2F21744E330008E00B /* Horatio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Horatio.h; sourceTree = "<group>"; };
 		A73D8A6B21744E490008E00B /* StartupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupManager.swift; sourceTree = "<group>"; };
 		A75B2A0F217548750054528A /* SCAT5Athlete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCAT5Athlete.swift; sourceTree = "<group>"; };
+		A761BB942176EDE5007E6D60 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		A761BB9521779103007E6D60 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		A799523E2174517A00B3BC1E /* LoginRegister.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginRegister.storyboard; sourceTree = "<group>"; };
 		A79952402174557500B3BC1E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A79952442174571900B3BC1E /* RoundRectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundRectButton.swift; sourceTree = "<group>"; };
@@ -296,6 +299,7 @@
 				A73D89D421744D4D0008E00B /* LaunchScreen.storyboard */,
 				A73D89D721744D4D0008E00B /* Info.plist */,
 				A799526321745DCE00B3BC1E /* GoogleService-Info.plist */,
+				A761BB942176EDE5007E6D60 /* BridgingHeader.h */,
 			);
 			path = "SCAT-5 Test";
 			sourceTree = "<group>";
@@ -508,6 +512,7 @@
 				A79952522174573600B3BC1E /* UIViewExtensions.swift */,
 				A79952532174573600B3BC1E /* UIApplicationExtensions.swift */,
 				A79952542174573600B3BC1E /* UIColorExtensions.swift */,
+				A761BB9521779103007E6D60 /* DateExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -853,6 +858,7 @@
 				A73D8A6821744E340008E00B /* ServiceEndpoint.swift in Sources */,
 				A799524A2174571A00B3BC1E /* KeyboardReactiveScrollView.swift in Sources */,
 				A73D8A3721744E330008E00B /* ReachabilityCondition.swift in Sources */,
+				A761BB9621779103007E6D60 /* DateExtensions.swift in Sources */,
 				A73D8A5A21744E340008E00B /* TimeoutObserver.swift in Sources */,
 				A73D8A4B21744E340008E00B /* URLSessionTaskOperation.swift in Sources */,
 				A79952572174573600B3BC1E /* UIViewExtensions.swift in Sources */,
@@ -1007,6 +1013,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "SCAT-5 Test/BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1061,6 +1068,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "SCAT-5 Test/BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1081,6 +1089,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cs4261.SCAT-5-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SCAT-5 Test/BridgingHeader.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1101,6 +1110,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "cs4261.SCAT-5-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SCAT-5 Test/BridgingHeader.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

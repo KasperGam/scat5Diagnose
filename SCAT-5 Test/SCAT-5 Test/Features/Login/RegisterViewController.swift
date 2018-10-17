@@ -50,6 +50,7 @@ class RegisterViewController: UIViewController {
         newUser.firstName = firstName
         newUser.lastName = lastName
         newUser.gtName = userName
+        newUser.showInstructions = true
 
         auth?.createUser(withEmail: email, password: password) { [weak self] (result, error) in
             guard
