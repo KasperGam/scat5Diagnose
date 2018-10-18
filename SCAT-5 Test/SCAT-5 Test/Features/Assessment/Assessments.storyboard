@@ -188,7 +188,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="nextPressed:" destination="AFj-lB-JGO" eventType="touchUpInside" id="f6A-cf-y3Q"/>
                                     <segue destination="Vq8-CL-MQY" kind="show" id="rQp-x3-DhX"/>
                                 </connections>
                             </button>
@@ -336,35 +335,66 @@ October September August July June May April March February Ja
                                     <constraint firstItem="eeh-ax-Hjj" firstAttribute="leading" secondItem="uhC-Ca-Ls7" secondAttribute="leading" constant="15" id="yqB-B6-6Qy"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0AT-5D-Wkf">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="mh4-fS-FXQ">
                                 <rect key="frame" x="15" y="1150" width="345" height="30"/>
-                                <color key="backgroundColor" red="0.1831529438" green="0.2328349948" blue="0.63351464270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAh-ml-mh7" customClass="ToggleableButton" customModule="SCAT_5_Test" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="165" height="30"/>
+                                        <color key="backgroundColor" red="0.1831529438" green="0.2328349948" blue="0.63351464270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="eYh-yH-dzc"/>
+                                        </constraints>
+                                        <state key="normal" title="PREVIOUS">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <state key="disabled" title="PREVIOUS">
+                                            <color key="titleColor" red="0.49406129119999997" green="0.49415010209999999" blue="0.49405562879999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                                <color key="value" red="0.1831529438" green="0.2328349948" blue="0.63351464270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="disabledBackgroundColor">
+                                                <color key="value" red="0.83901911969999998" green="0.84320610760000003" blue="0.8430820107" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="previousTrialPressed:" destination="Vq8-CL-MQY" eventType="touchUpInside" id="eun-tl-kmr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0AT-5D-Wkf">
+                                        <rect key="frame" x="180" y="0.0" width="165" height="30"/>
+                                        <color key="backgroundColor" red="0.1831529438" green="0.2328349948" blue="0.63351464270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="HZ7-1f-7dN"/>
+                                        </constraints>
+                                        <state key="normal" title="NEXT">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextTrialPressed:" destination="Vq8-CL-MQY" eventType="touchUpInside" id="Df9-aX-qyb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="EsV-X4-Bfc"/>
-                                    <constraint firstAttribute="height" constant="30" id="HZ7-1f-7dN"/>
+                                    <constraint firstAttribute="height" constant="30" id="RUf-qY-k9U"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="lXK-T8-w3f"/>
                                 </constraints>
-                                <state key="normal" title="NEXT">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="nextPressed:" destination="AFj-lB-JGO" eventType="touchUpInside" id="uQ3-RF-f4W"/>
-                                    <action selector="nextTrialPressed:" destination="Vq8-CL-MQY" eventType="touchUpInside" id="Df9-aX-qyb"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uhC-Ca-Ls7" firstAttribute="leading" secondItem="jcg-k4-Gng" secondAttribute="leading" id="6RV-bl-FGr"/>
-                            <constraint firstItem="SVK-BD-7GX" firstAttribute="trailing" secondItem="0AT-5D-Wkf" secondAttribute="trailing" priority="999" constant="15" id="7Ok-NU-aDh"/>
-                            <constraint firstItem="SVK-BD-7GX" firstAttribute="bottom" secondItem="0AT-5D-Wkf" secondAttribute="bottom" constant="20" id="DIp-gG-gAC"/>
+                            <constraint firstItem="SVK-BD-7GX" firstAttribute="trailing" secondItem="mh4-fS-FXQ" secondAttribute="trailing" priority="999" constant="15" id="Fn6-Tg-nAE"/>
                             <constraint firstAttribute="trailing" secondItem="uhC-Ca-Ls7" secondAttribute="trailing" id="OXR-jy-730"/>
-                            <constraint firstItem="0AT-5D-Wkf" firstAttribute="leading" secondItem="SVK-BD-7GX" secondAttribute="leading" priority="999" constant="15" id="Rmi-BS-aEZ"/>
                             <constraint firstItem="uhC-Ca-Ls7" firstAttribute="top" secondItem="iyL-t3-QOF" secondAttribute="bottom" constant="8.5" id="TcG-JK-b0B"/>
+                            <constraint firstItem="mh4-fS-FXQ" firstAttribute="leading" secondItem="SVK-BD-7GX" secondAttribute="leading" priority="999" constant="15" id="XB3-hP-Tcn"/>
                             <constraint firstItem="SVK-BD-7GX" firstAttribute="trailing" secondItem="iyL-t3-QOF" secondAttribute="trailing" constant="15" id="dyy-0i-bIj"/>
                             <constraint firstItem="iyL-t3-QOF" firstAttribute="leading" secondItem="SVK-BD-7GX" secondAttribute="leading" constant="15" id="gYz-zx-VBv"/>
                             <constraint firstItem="iyL-t3-QOF" firstAttribute="top" secondItem="SVK-BD-7GX" secondAttribute="top" constant="40" id="h7y-en-F9x"/>
-                            <constraint firstItem="0AT-5D-Wkf" firstAttribute="top" secondItem="uhC-Ca-Ls7" secondAttribute="bottom" constant="20" id="nMP-ff-h0Q"/>
-                            <constraint firstItem="0AT-5D-Wkf" firstAttribute="centerX" secondItem="jcg-k4-Gng" secondAttribute="centerX" id="o8y-N1-zgF"/>
+                            <constraint firstItem="mh4-fS-FXQ" firstAttribute="top" secondItem="uhC-Ca-Ls7" secondAttribute="bottom" constant="20" id="hgg-7h-zyX"/>
+                            <constraint firstItem="mh4-fS-FXQ" firstAttribute="centerX" secondItem="jcg-k4-Gng" secondAttribute="centerX" id="lpg-86-2Lw"/>
+                            <constraint firstItem="SVK-BD-7GX" firstAttribute="bottom" secondItem="mh4-fS-FXQ" secondAttribute="bottom" constant="20" id="wvf-oe-c9G"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SVK-BD-7GX"/>
                     </view>
@@ -376,6 +406,7 @@ October September August July June May April March February Ja
                         <outlet property="monthsOfYearRecallSwitch" destination="Dlp-Sm-iiK" id="QyM-im-beK"/>
                         <outlet property="monthsOfYearTestView" destination="38U-az-lOO" id="WiM-T1-NR3"/>
                         <outlet property="nextTrialButton" destination="0AT-5D-Wkf" id="px2-aM-1nd"/>
+                        <outlet property="previousTrialButton" destination="AAh-ml-mh7" id="eYg-s5-1cM"/>
                         <outlet property="wordListTableView" destination="X9n-Xe-8p0" id="MlK-Tg-KVx"/>
                         <segue destination="jpO-53-V9i" kind="custom" identifier="toHome" customClass="NavigationTransistionSegue" customModule="SCAT_5_Test" customModuleProvider="target" id="p3A-a0-tx0"/>
                     </connections>

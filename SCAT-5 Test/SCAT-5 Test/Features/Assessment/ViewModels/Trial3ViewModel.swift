@@ -27,8 +27,20 @@ class Trial3ViewModel: TrialViewModel {
         return Trial4ViewModel()
     }
 
+    func getPreviousTrial() -> TrialViewModel? {
+        return Trial2ViewModel()
+    }
+
     func updateAssessment(_ assessment: inout SCAT5Test, wordList: [WordRecall]?, calendarRecall: Bool, balenceScore: Int) {
         assessment.trial3TandemLegErrors = balenceScore
         assessment.trial3MemoryScore = calendarRecall ? 1 : 0
+    }
+
+    func balenceErrors(from assessment: SCAT5Test?) -> Int {
+        return assessment?.trial3TandemLegErrors ?? 0
+    }
+
+    func calendarScore(from assessment: SCAT5Test?) -> Int {
+        return assessment?.trial3MemoryScore ?? 0
     }
 }

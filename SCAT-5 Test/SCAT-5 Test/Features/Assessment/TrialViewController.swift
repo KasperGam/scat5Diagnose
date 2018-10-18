@@ -16,6 +16,7 @@ class TrialViewController: UIViewController {
     @IBOutlet weak var legStanceTestView: BalanceTestingView!
     @IBOutlet weak var nextTrialButton: UIButton!
     @IBOutlet weak var monthsOfYearRecallSwitch: UISwitch!
+    @IBOutlet weak var previousTrialButton: UIButton!
 
     var assessment: SCAT5Test?
 
@@ -27,15 +28,31 @@ class TrialViewController: UIViewController {
         guard let manager = try? Container.resolve(DataManager.self) else { return }
         assessment = manager.currentTest
         wordListTableView.dataSource = self
+        previousTrialButton.isEnabled = false
         setupForCurrentTrial()
+    }
+
+    @IBAction func previousTrialPressed(_ sender: Any) {
+        if var test = assessment {
+            currentTrial.updateAssessment(&test, wordList: currentWordList, calendarRecall: monthsOfYearRecallSwitch.isOn, balenceScore: legStanceTestView.errorCount)
+            assessment = test
+        }
+        if let previousTrial = currentTrial.getPreviousTrial() {
+            currentTrial = previousTrial
+            previousTrialButton.isEnabled = previousTrial.getPreviousTrial() != nil
+            setupForCurrentTrial()
+        }
+
     }
 
     @IBAction func nextTrialPressed(_ sender: Any) {
         if var test = assessment {
-            currentTrial.updateAssessment(&test, wordList: currentWordList, calendarRecall: monthsOfYearRecallSwitch.isOn, balenceScore: 0)
+            currentTrial.updateAssessment(&test, wordList: currentWordList, calendarRecall: monthsOfYearRecallSwitch.isOn, balenceScore: legStanceTestView.errorCount)
+            assessment = test
         }
         if let nextTrial = currentTrial.getNextTrial() {
             currentTrial = nextTrial
+            previousTrialButton.isEnabled = true
             setupForCurrentTrial()
         } else {
 
@@ -55,12 +72,13 @@ class TrialViewController: UIViewController {
         instructionLabel.text = currentTrial.trialInstruction
         wordListTableView.isHidden = !currentTrial.shouldUseWordList
         monthsOfYearTestView.isHidden = !currentTrial.shouldUseCalendarTest
-        monthsOfYearRecallSwitch.setOn(false, animated: false)
+        monthsOfYearRecallSwitch.setOn(currentTrial.calendarScore(from: assessment) > 0 ? true : false, animated: false)
         legStanceTestView.isHidden = !currentTrial.shouldUseBalanceTest
         nextTrialButton.setTitle(currentTrial.nextTrialButtonString ?? "NEXT", for: UIControl.State())
         legStanceTestView.balanceTestLabel.text = currentTrial.balanceString
-        legStanceTestView.numberOfErrorsLabel.text = "0"
-        legStanceTestView.errorCount = 0
+        let balenceErrors = currentTrial.balenceErrors(from: assessment)
+        legStanceTestView.numberOfErrorsLabel.text = String(balenceErrors)
+        legStanceTestView.errorCount = balenceErrors
         wordListTableView.reloadData()
         self.navigationItem.title = "Trial \(currentTrial.trialNumber)"
     }

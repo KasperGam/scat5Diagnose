@@ -27,9 +27,14 @@ class Trial4ViewModel: TrialViewModel {
         return nil
     }
 
+    func getPreviousTrial() -> TrialViewModel? {
+        return Trial3ViewModel()
+    }
+
     func updateAssessment(_ assessment: inout SCAT5Test, wordList: [WordRecall]?, calendarRecall: Bool, balenceScore: Int) {
         if let list = wordList {
             assessment.trial4MemoryScore = list.memoryScore
+            assessment.trialWordRecall[trialNumber] = wordList
         }
     }
 }

@@ -19,7 +19,20 @@ protocol TrialViewModel {
     var nextTrialButtonString: String? { get set }
 
     func getNextTrial() -> TrialViewModel?
+    func getPreviousTrial() -> TrialViewModel?
 
     func updateAssessment(_ assessment: inout SCAT5Test, wordList: [WordRecall]?, calendarRecall: Bool, balenceScore: Int)
 
+    func balenceErrors(from assessment: SCAT5Test?) -> Int
+    func calendarScore(from assessment: SCAT5Test?) -> Int
+}
+
+extension TrialViewModel {
+    func balenceErrors(from assessment: SCAT5Test?) -> Int {
+        return 0
+    }
+
+    func calendarScore(from assessment: SCAT5Test?) -> Int {
+        return 0
+    }
 }
