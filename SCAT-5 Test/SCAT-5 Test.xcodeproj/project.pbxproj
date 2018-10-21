@@ -107,6 +107,7 @@
 		A799528F21751E0A00B3BC1E /* BalanceTestingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A799528E21751E0A00B3BC1E /* BalanceTestingView.xib */; };
 		A799529121751E1800B3BC1E /* BalanceTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A799529021751E1800B3BC1E /* BalanceTestingView.swift */; };
 		A79952932175250F00B3BC1E /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79952922175250F00B3BC1E /* KeychainManager.swift */; };
+		A7D64E8021783562001352D4 /* AssessmentResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D64E7F21783562001352D4 /* AssessmentResultsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,6 +238,7 @@
 		A799528E21751E0A00B3BC1E /* BalanceTestingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceTestingView.xib; sourceTree = "<group>"; };
 		A799529021751E1800B3BC1E /* BalanceTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceTestingView.swift; sourceTree = "<group>"; };
 		A79952922175250F00B3BC1E /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		A7D64E7F21783562001352D4 /* AssessmentResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentResultsViewController.swift; sourceTree = "<group>"; };
 		AC9B846D1F4A15E1EF936213 /* Pods-SCAT-5 Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCAT-5 Test.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCAT-5 Test/Pods-SCAT-5 Test.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -596,6 +598,7 @@
 				A79952742174D4CE00B3BC1E /* SetupViewController.swift */,
 				A799527B2174EABB00B3BC1E /* SymptomsViewController.swift */,
 				A799527D2174F78F00B3BC1E /* TrialViewController.swift */,
+				A7D64E7F21783562001352D4 /* AssessmentResultsViewController.swift */,
 			);
 			path = Assessment;
 			sourceTree = "<group>";
@@ -687,6 +690,9 @@
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
 							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 							com.apple.iCloud = {
@@ -864,6 +870,7 @@
 				A7995269217463C100B3BC1E /* HomeViewController.swift in Sources */,
 				A73D8A5521744E340008E00B /* DelayOperation.swift in Sources */,
 				A799524E2174572B00B3BC1E /* NavigationTransitionSegue.swift in Sources */,
+				A7D64E8021783562001352D4 /* AssessmentResultsViewController.swift in Sources */,
 				A73D8A3D21744E330008E00B /* NegatedCondition.swift in Sources */,
 				A73D8A5621744E340008E00B /* BlockObserver.swift in Sources */,
 				A73D8A5921744E340008E00B /* Operation.swift in Sources */,

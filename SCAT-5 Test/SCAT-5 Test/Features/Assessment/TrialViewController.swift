@@ -32,6 +32,12 @@ class TrialViewController: UIViewController {
         setupForCurrentTrial()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let resultsVC = segue.destination as? AssessmentResultsViewController {
+            resultsVC.assessment = assessment
+        }
+    }
+
     @IBAction func previousTrialPressed(_ sender: Any) {
         if var test = assessment {
             currentTrial.updateAssessment(&test, wordList: currentWordList, calendarRecall: monthsOfYearRecallSwitch.isOn, balenceScore: legStanceTestView.errorCount)
@@ -61,7 +67,7 @@ class TrialViewController: UIViewController {
             }
             manager.currentTest = assessment
             manager.saveCurrentAssessment()
-            performSegue(withIdentifier: "toHome", sender: self)
+            performSegue(withIdentifier: "toCompletion", sender: self)
         }
     }
 

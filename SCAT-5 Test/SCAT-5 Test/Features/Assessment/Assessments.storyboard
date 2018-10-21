@@ -408,12 +408,80 @@ October September August July June May April March February Ja
                         <outlet property="nextTrialButton" destination="0AT-5D-Wkf" id="px2-aM-1nd"/>
                         <outlet property="previousTrialButton" destination="AAh-ml-mh7" id="eYg-s5-1cM"/>
                         <outlet property="wordListTableView" destination="X9n-Xe-8p0" id="MlK-Tg-KVx"/>
-                        <segue destination="jpO-53-V9i" kind="custom" identifier="toHome" customClass="NavigationTransistionSegue" customModule="SCAT_5_Test" customModuleProvider="target" id="p3A-a0-tx0"/>
+                        <segue destination="epE-fa-wyc" kind="showDetail" identifier="toCompletion" id="JGY-qO-NpH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dtV-q3-2kj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1789.5999999999999" y="35.082458770614693"/>
+        </scene>
+        <!--Assessment Results View Controller-->
+        <scene sceneID="pqE-gE-ceQ">
+            <objects>
+                <viewController id="epE-fa-wyc" customClass="AssessmentResultsViewController" customModule="SCAT_5_Test" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gf2-sA-jMz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assessment Complete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBL-wV-wUg">
+                                <rect key="frame" x="15" y="60" width="345" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OaC-A5-gzR">
+                                <rect key="frame" x="15" y="617" width="345" height="30"/>
+                                <color key="backgroundColor" red="0.1831529438" green="0.2328349948" blue="0.63351464270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="cde-6s-OHH"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="l0X-yh-C1w"/>
+                                </constraints>
+                                <state key="normal" title="DONE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="jpO-53-V9i" kind="custom" customClass="NavigationTransistionSegue" customModule="SCAT_5_Test" customModuleProvider="target" id="pKa-Lj-TXc"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dNb-Um-fqG">
+                                <rect key="frame" x="15" y="101" width="345" height="496"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="resultCell" id="3OK-9q-eql">
+                                        <rect key="frame" x="0.0" y="28" width="345" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3OK-9q-eql" id="VJG-1g-cb8">
+                                            <rect key="frame" x="0.0" y="0.0" width="345" height="40"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="w1T-qo-Oo4" firstAttribute="trailing" secondItem="dNb-Um-fqG" secondAttribute="trailing" constant="15" id="1D6-qS-JE3"/>
+                            <constraint firstItem="dNb-Um-fqG" firstAttribute="leading" secondItem="w1T-qo-Oo4" secondAttribute="leading" constant="15" id="1Yh-Sh-D2j"/>
+                            <constraint firstItem="dNb-Um-fqG" firstAttribute="top" secondItem="TBL-wV-wUg" secondAttribute="bottom" constant="20" id="5i9-b2-JWs"/>
+                            <constraint firstItem="w1T-qo-Oo4" firstAttribute="trailing" secondItem="TBL-wV-wUg" secondAttribute="trailing" constant="15" id="7Sg-Sx-nDH"/>
+                            <constraint firstItem="w1T-qo-Oo4" firstAttribute="trailing" secondItem="OaC-A5-gzR" secondAttribute="trailing" priority="999" constant="15" id="GTV-Mg-6at"/>
+                            <constraint firstItem="w1T-qo-Oo4" firstAttribute="bottom" secondItem="OaC-A5-gzR" secondAttribute="bottom" constant="20" id="M9U-JM-8us"/>
+                            <constraint firstItem="OaC-A5-gzR" firstAttribute="centerX" secondItem="gf2-sA-jMz" secondAttribute="centerX" id="MhX-Ix-Np9"/>
+                            <constraint firstItem="TBL-wV-wUg" firstAttribute="top" secondItem="w1T-qo-Oo4" secondAttribute="top" constant="40" id="PUs-q8-8bK"/>
+                            <constraint firstItem="OaC-A5-gzR" firstAttribute="top" secondItem="dNb-Um-fqG" secondAttribute="bottom" constant="20" id="Pp0-OU-Ejo"/>
+                            <constraint firstItem="OaC-A5-gzR" firstAttribute="leading" secondItem="w1T-qo-Oo4" secondAttribute="leading" priority="999" constant="15" id="QtI-QR-1Bb"/>
+                            <constraint firstItem="TBL-wV-wUg" firstAttribute="leading" secondItem="w1T-qo-Oo4" secondAttribute="leading" constant="15" id="hwl-JP-lgx"/>
+                            <constraint firstItem="TBL-wV-wUg" firstAttribute="centerX" secondItem="gf2-sA-jMz" secondAttribute="centerX" id="wGe-A4-UDj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="w1T-qo-Oo4"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="dNb-Um-fqG" id="xTv-Kd-yYp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wPi-Y6-OJf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2785" y="37"/>
         </scene>
         <!--Home-->
         <scene sceneID="Wwk-uK-wav">
@@ -421,7 +489,7 @@ October September August July June May April March February Ja
                 <viewControllerPlaceholder storyboardName="Home" id="jpO-53-V9i" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewf-Ke-V2W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2450" y="37"/>
+            <point key="canvasLocation" x="3453" y="37"/>
         </scene>
     </scenes>
 </document>
