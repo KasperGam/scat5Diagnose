@@ -12,6 +12,8 @@ protocol TrialViewModel {
 
     var shouldUseWordList: Bool { get set }
     var shouldUseBalanceTest: Bool { get set }
+    var showCountdown: Bool? { get set }
+    var countDownValue: Int? { get set }
     var shouldUseCalendarTest: Bool { get set }
     var trialInstruction: String? { get set }
     var balanceString: String? { get set }

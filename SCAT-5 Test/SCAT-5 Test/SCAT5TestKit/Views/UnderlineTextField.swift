@@ -6,6 +6,9 @@
 import UIKit
 
 class UnderlineTextField: UITextField {
+
+    @IBInspectable var normalUnderlineColor: UIColor = .lightGray
+    @IBInspectable var selectedUnderlineColor: UIColor = .blue
     
     private var underlineView: UIView
     
@@ -19,6 +22,22 @@ class UnderlineTextField: UITextField {
         underlineView = UIView()
         super.init(coder: aDecoder)
         commonInit()
+    }
+
+    override func becomeFirstResponder() -> Bool {
+        let responder = super.becomeFirstResponder()
+        if responder {
+            underlineView.backgroundColor = selectedUnderlineColor
+        }
+        return responder
+    }
+
+    override func resignFirstResponder() -> Bool {
+        let resign = super.resignFirstResponder()
+        if resign {
+            underlineView.backgroundColor = normalUnderlineColor
+        }
+        return resign
     }
     
     private func commonInit() {

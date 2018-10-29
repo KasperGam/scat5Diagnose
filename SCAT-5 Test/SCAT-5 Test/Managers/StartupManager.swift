@@ -35,17 +35,23 @@ class StartupManager {
 
     private func configureNavBar() {
 
-        let navBarAppearence = UINavigationBar.appearance()
-        navBarAppearence.barTintColor = UIColor(hex: "2F3BA2")
-        navBarAppearence.tintColor = UIColor.white
-        navBarAppearence.isTranslucent = false
-        navBarAppearence.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
 
-        let tabBarAppearence = UITabBar.appearance()
-        tabBarAppearence.barTintColor = UIColor(hex: "2F3BA2")
-        tabBarAppearence.tintColor = UIColor.white
-        tabBarAppearence.isTranslucent = false
-        tabBarAppearence.items?.forEach({$0.setBadgeTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State())})
+        let navBarAppearence = UINavigationBar.appearance()
+        //navBarAppearence.barTintColor = UIColor(hex: "2F3BA2")
+        navBarAppearence.isTranslucent = true
+        navBarAppearence.barTintColor = UIColor.clear
+        navBarAppearence.tintColor = UIColor.black
+        //navBarAppearence.isTranslucent = false
+        navBarAppearence.setBackgroundImage(UIImage(), for: .default)
+        navBarAppearence.shadowImage = UIImage()
+        navBarAppearence.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+
+//        let tabBarAppearence = UITabBar.appearance()
+//        tabBarAppearence.barTintColor = UIColor(hex: "2F3BA2")
+//        tabBarAppearence.tintColor = UIColor.white
+//        tabBarAppearence.isTranslucent = false
+//        tabBarAppearence.items?.forEach({$0.setBadgeTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State())})
     }
 
 }

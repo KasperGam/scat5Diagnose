@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "plus_btn.png",
+      "filename" : "scatter_logo_white.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "plus_btn-1.png",
+      "filename" : "scatter_logo_white-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "plus_btn-2.png",
+      "filename" : "scatter_logo_white-2.png",
       "scale" : "3x"
     }
   ],

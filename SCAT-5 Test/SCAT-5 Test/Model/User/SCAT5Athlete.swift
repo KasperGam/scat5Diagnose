@@ -6,12 +6,13 @@
 //  Copyright © 2018 CS4261. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol SCAT5Athlete {
     var dob: Date? { get set }
     var id: String? { get set }
     var name: String? { get set }
+    var profileImage: UIImage? { get set }
 
     func dobString() -> String?
 }
@@ -28,11 +29,13 @@ class SCAT5AthleteFlyweight: SCAT5Athlete, Codable {
     var dob: Date?
     var id: String?
     var name: String?
+    var profileImage: UIImage?
 
     var formatter: DateFormatter {
         get {
             let formatter = DateFormatter()
-            formatter.dateFormat = "MM/dd/YYYY"
+            formatter.calendar = Calendar.current
+            formatter.dateFormat = "MM/dd/yyyy"
             return formatter
         }
     }
@@ -73,5 +76,17 @@ class SCAT5AthleteFlyweight: SCAT5Athlete, Codable {
         guard let name = name, let dob = dobString() else { return ""}
         let str = name + " " + dob
         return str.sha256()
+    }
+
+    func imageName() -> String {
+        guard
+            let name = name,
+            let dob = dob
+        else {
+            return ""
+        }
+        var newStr = name + formatter.string(from: dob)
+        newStr = newStr.replacingOccurrences(of: " ", with: "")
+        return newStr.replacingOccurrences(of: "/", with: "").lowercased() + ".jpg"
     }
 }

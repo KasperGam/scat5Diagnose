@@ -11,8 +11,11 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseFirestore
 import CodableFirebase
+import FirebaseStorage
 
 class DataManager {
+
+    let MAX_SIZE: Int64 = 4 * 1024 * 1024
 
     var currentUser: SCAT5User?
 
@@ -22,6 +25,8 @@ class DataManager {
 
     var db = Firestore.firestore()
 
+    let cloudStoreRoot = Storage.storage(url: "gs://scat5diagnose.appspot.com").reference()
+
     let decoder = FirebaseDecoder()
     let encoder = FirebaseEncoder()
 
@@ -30,6 +35,7 @@ class DataManager {
 
     init() {
         encoder.dateEncodingStrategy = .formatted(Date.formatterForMMddYYYYHHmma)
+        db.settings.areTimestampsInSnapshotsEnabled = true
     }
 
 }
@@ -89,19 +95,21 @@ extension DataManager {
 extension DataManager {
     func getAthletes(completion: @escaping ([SCAT5Athlete]) -> Void) {
         let ref = db.collection("Athlete")
-        ref.getDocuments{ (snapshot, error) in
+        ref.getDocuments{ [weak self] (snapshot, error) in
             guard
                 error == nil,
                 let snapshot = snapshot,
-                !snapshot.isEmpty
+                !snapshot.isEmpty,
+                let strongSelf = self
             else {
                 completion([])
                 return
             }
             var athletes: [SCAT5AthleteFlyweight] = []
             for document in snapshot.documents {
-                if let athlete = try? FirestoreDecoder().decode(SCAT5AthleteFlyweight.self, from: document.data()) {
+                if let athlete = try? strongSelf.firestoreDecoder.decode(SCAT5AthleteFlyweight.self, from: document.data()) {
                     athlete.id = document.documentID
+                    self?.getAthletePicture(athlete)
                     athletes.append(athlete)
                 }
             }
@@ -116,6 +124,21 @@ extension DataManager {
 
         if let value = try? firestoreEncoder.encode(athleteFlyweight) {
             ref.addDocument(data: value)
+        }
+    }
+
+    func getAthletePicture(_ athlete: SCAT5AthleteFlyweight, completion: @escaping (UIImage?) -> Void = {(_) in}) {
+        let reference = cloudStoreRoot.child("georgiatech").child(athlete.imageName())
+        reference.getData(maxSize: MAX_SIZE) { (data, error) in
+            guard
+                let data = data,
+                error == nil
+            else {
+                completion(nil)
+                return
+            }
+            athlete.profileImage = UIImage(data: data)
+            completion(UIImage(data: data))
         }
     }
 }

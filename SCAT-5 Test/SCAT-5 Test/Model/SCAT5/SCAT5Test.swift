@@ -25,6 +25,7 @@ protocol SCAT5Test {
     var memoryListUsed: WordList? { get set }
     var symptoms: [Symptom] { get set }
     var trialWordRecall: [Int: [WordRecall]] { get set }
+    var duration: Int? { get set }
 }
 
 extension SCAT5Test {
@@ -42,6 +43,7 @@ extension SCAT5Test {
         memoryListUsed = model.memoryListUsed ?? memoryListUsed
         symptoms = model.symptoms.isEmpty ? model.symptoms : symptoms
         trialWordRecall = model.trialWordRecall.isEmpty ? model.trialWordRecall : trialWordRecall
+        duration = model.duration ?? duration
     }
 }
 
@@ -51,6 +53,31 @@ public let wordList1: WordList = ["Elbow", "Apple", "Carpet", "Saddle", "Bubble"
 public let wordList2: WordList = ["Candle", "Paper", "Sugar", "Sandwich", "Wagon"]
 public let wordList3: WordList = ["Baby", "Monkey", "Perfume", "Sunset", "Iron"]
 public let wordList4: WordList = ["Finger", "Penny", "Blanket", "Lemon", "Insect"]
+
+struct WordLists {
+    static func getList(for index: Int) -> WordList {
+        switch index {
+        case 0: return wordList1
+        case 1: return wordList2
+        case 2: return wordList3
+        case 3: return wordList4
+        default:
+            assertionFailure()
+            return wordList1
+        }
+    }
+
+    static func listString(for wordList: WordList) -> String {
+        var retStr = ""
+        for i in 0..<wordList.count {
+            retStr += wordList[i]
+            if i != wordList.count - 1 {
+                retStr += ", "
+            }
+        }
+        return retStr
+    }
+}
 
 struct WordRecall: Codable {
     var word: String
@@ -83,6 +110,7 @@ class SCAT5Flyweight: SCAT5Test, Codable {
     var trial3MemoryScore: Int?
     var trial3TandemLegErrors: Int?
     var trial4MemoryScore: Int?
+    var duration: Int?
     var memoryListUsed: WordList?
     var symptoms: [Symptom] = []
     var trialWordRecall: [Int : [WordRecall]] = [:]
@@ -98,6 +126,7 @@ class SCAT5Flyweight: SCAT5Test, Codable {
         case trial3MemoryScore
         case trial3TandemLegErrors
         case trial4MemoryScore
+        case duration = "secondsToTest"
     }
 
     init() {}
@@ -116,6 +145,7 @@ class SCAT5Flyweight: SCAT5Test, Codable {
         trial3MemoryScore = try container.decodeIfPresent(Int.self, forKey: .trial3MemoryScore)
         trial3TandemLegErrors = try container.decodeIfPresent(Int.self, forKey: .trial3TandemLegErrors)
         trial4MemoryScore = try container.decodeIfPresent(Int.self, forKey: .trial4MemoryScore)
+        duration = try container.decodeIfPresent(Int.self, forKey: .duration)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -130,6 +160,7 @@ class SCAT5Flyweight: SCAT5Test, Codable {
         try container.encodeIfPresent(trial3TandemLegErrors, forKey: .trial3TandemLegErrors)
         try container.encodeIfPresent(trial4MemoryScore, forKey: .trial4MemoryScore)
         try container.encodeIfPresent(testDate?.getMMddYYYYHHmma(), forKey: .testDate)
+        try container.encodeIfPresent(duration, forKey: .duration)
     }
 
 }

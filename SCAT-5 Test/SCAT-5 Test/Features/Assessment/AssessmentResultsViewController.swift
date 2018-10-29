@@ -27,7 +27,7 @@ class AssessmentResultsViewController: UIViewController {
 
 extension AssessmentResultsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return assessment != nil ? 6 : 0
+        return assessment != nil ? 7 : 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,6 +48,8 @@ extension AssessmentResultsViewController: UITableViewDataSource {
             key = "Trial 3 Tandem Leg Errors"
         case 5: value = assessment?.trial4MemoryScore ?? 0
             key = "Trial 4 Memory Score"
+        case 6: value = assessment?.duration ?? 0
+            key = "Assessment duration (s)"
         default:
             value = 0
             key = "No Key Found"

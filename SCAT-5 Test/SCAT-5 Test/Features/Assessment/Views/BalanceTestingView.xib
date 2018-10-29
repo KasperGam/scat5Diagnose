@@ -60,7 +60,6 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="Goa-hd-eO7" firstAttribute="leading" secondItem="oES-16-bEW" secondAttribute="leading" id="6We-YT-iQt"/>
                                         <constraint firstItem="uyH-Ve-eC7" firstAttribute="top" secondItem="oES-16-bEW" secondAttribute="top" id="GdF-T2-V7w"/>
@@ -110,7 +109,6 @@
                     </subviews>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="yGh-HS-PLA" secondAttribute="bottom" id="Fg9-Dg-OCN"/>
                 <constraint firstItem="yGh-HS-PLA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Vje-8D-ikm"/>
@@ -124,6 +122,6 @@
     </objects>
     <resources>
         <image name="MinusButton" width="512" height="512"/>
-        <image name="PlusButton" width="256" height="256"/>
+        <image name="PlusButton" width="135" height="135"/>
     </resources>
 </document>

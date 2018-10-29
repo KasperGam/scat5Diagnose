@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import SCAT_5_Test
+//@testable import SCAT_5_Test
 
 class SCAT_5_TestTests: XCTestCase {
 

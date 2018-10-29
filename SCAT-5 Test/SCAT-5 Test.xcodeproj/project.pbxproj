@@ -68,10 +68,12 @@
 		A73D8A6821744E340008E00B /* ServiceEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D8A2D21744E330008E00B /* ServiceEndpoint.swift */; };
 		A73D8A6921744E340008E00B /* ServiceEndpointPathTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D8A2E21744E330008E00B /* ServiceEndpointPathTransformer.swift */; };
 		A73D8A6C21744E490008E00B /* StartupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D8A6B21744E490008E00B /* StartupManager.swift */; };
+		A7422E462185E25F00FFEBCC /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7422E452185E25F00FFEBCC /* CountdownView.swift */; };
 		A75B2A10217548750054528A /* SCAT5Athlete.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75B2A0F217548750054528A /* SCAT5Athlete.swift */; };
 		A761BB9621779103007E6D60 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761BB9521779103007E6D60 /* DateExtensions.swift */; };
 		A761BB9C2177B79F007E6D60 /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761BB9B2177B79F007E6D60 /* UINavigationControllerExtensions.swift */; };
 		A761BB9E2177B86F007E6D60 /* TogglableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761BB9D2177B86F007E6D60 /* TogglableButton.swift */; };
+		A78151892180C25A00FCC6C3 /* NumericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78151882180C25A00FCC6C3 /* NumericExtensions.swift */; };
 		A799523F2174517A00B3BC1E /* LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A799523E2174517A00B3BC1E /* LoginRegister.storyboard */; };
 		A79952412174557500B3BC1E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79952402174557500B3BC1E /* LoginViewController.swift */; };
 		A79952482174571A00B3BC1E /* RoundRectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79952442174571900B3BC1E /* RoundRectButton.swift */; };
@@ -197,12 +199,14 @@
 		A73D8A2E21744E330008E00B /* ServiceEndpointPathTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceEndpointPathTransformer.swift; sourceTree = "<group>"; };
 		A73D8A2F21744E330008E00B /* Horatio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Horatio.h; sourceTree = "<group>"; };
 		A73D8A6B21744E490008E00B /* StartupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupManager.swift; sourceTree = "<group>"; };
+		A7422E452185E25F00FFEBCC /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
 		A75B2A0F217548750054528A /* SCAT5Athlete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCAT5Athlete.swift; sourceTree = "<group>"; };
 		A761BB942176EDE5007E6D60 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		A761BB9521779103007E6D60 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		A761BB9B2177B79F007E6D60 /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		A761BB9D2177B86F007E6D60 /* TogglableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogglableButton.swift; sourceTree = "<group>"; };
 		A761BB9F2177BDFA007E6D60 /* SCAT-5 Test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SCAT-5 Test.entitlements"; sourceTree = "<group>"; };
+		A78151882180C25A00FCC6C3 /* NumericExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericExtensions.swift; sourceTree = "<group>"; };
 		A799523E2174517A00B3BC1E /* LoginRegister.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginRegister.storyboard; sourceTree = "<group>"; };
 		A79952402174557500B3BC1E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A79952442174571900B3BC1E /* RoundRectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundRectButton.swift; sourceTree = "<group>"; };
@@ -523,6 +527,7 @@
 				A79952542174573600B3BC1E /* UIColorExtensions.swift */,
 				A761BB9521779103007E6D60 /* DateExtensions.swift */,
 				A761BB9B2177B79F007E6D60 /* UINavigationControllerExtensions.swift */,
+				A78151882180C25A00FCC6C3 /* NumericExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -593,7 +598,7 @@
 			isa = PBXGroup;
 			children = (
 				A79952832174FB1400B3BC1E /* ViewModels */,
-				A79952762174E76F00B3BC1E /* Cells */,
+				A79952762174E76F00B3BC1E /* Views */,
 				A79952722174720600B3BC1E /* Assessments.storyboard */,
 				A79952742174D4CE00B3BC1E /* SetupViewController.swift */,
 				A799527B2174EABB00B3BC1E /* SymptomsViewController.swift */,
@@ -603,15 +608,16 @@
 			path = Assessment;
 			sourceTree = "<group>";
 		};
-		A79952762174E76F00B3BC1E /* Cells */ = {
+		A79952762174E76F00B3BC1E /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				A79952772174E77C00B3BC1E /* SymptomTableViewCell.swift */,
 				A799527F2174FA3600B3BC1E /* WordListTableViewCell.swift */,
 				A799528E21751E0A00B3BC1E /* BalanceTestingView.xib */,
 				A799529021751E1800B3BC1E /* BalanceTestingView.swift */,
+				A7422E452185E25F00FFEBCC /* CountdownView.swift */,
 			);
-			path = Cells;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		A79952832174FB1400B3BC1E /* ViewModels */ = {
@@ -902,6 +908,7 @@
 				A73D8A6021744E340008E00B /* Service.swift in Sources */,
 				A73D8A3621744E330008E00B /* RemoteNotificationCondition.swift in Sources */,
 				A73D8A3221744E330008E00B /* FeatureManager.swift in Sources */,
+				A78151892180C25A00FCC6C3 /* NumericExtensions.swift in Sources */,
 				A73D89C921744D4C0008E00B /* AppDelegate.swift in Sources */,
 				A73D8A3521744E330008E00B /* TaskScheduler.swift in Sources */,
 				A73D8A5721744E340008E00B /* CalendarCondition.swift in Sources */,
@@ -930,6 +937,7 @@
 				A73D8A3321744E330008E00B /* FeatureSelector.swift in Sources */,
 				A73D8A5D21744E340008E00B /* JSONParsing.swift in Sources */,
 				A73D8A3921744E330008E00B /* NSLock+Operations.swift in Sources */,
+				A7422E462185E25F00FFEBCC /* CountdownView.swift in Sources */,
 				A73D8A3021744E330008E00B /* FeatureSubject.swift in Sources */,
 				A799526221745C2600B3BC1E /* SCAT5Test.swift in Sources */,
 				A73D8A6621744E340008E00B /* ServiceRequestDecorator.swift in Sources */,

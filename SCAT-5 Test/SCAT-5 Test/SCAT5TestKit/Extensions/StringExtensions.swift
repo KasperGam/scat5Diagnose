@@ -15,6 +15,7 @@ extension String {
         return emailTest.evaluate(with: self)
     }
 
+    // MARK: - Encryption
     func sha256() -> String {
         if let stringData = self.data(using: String.Encoding.utf8) {
             return hexStringFromData(input: digest(input: stringData as NSData))
@@ -42,3 +43,46 @@ extension String {
     }
     
 }
+
+// MARK: - String replacement
+
+struct StringReplacementStrategy {
+    enum Strategy {
+        case curlyBraces
+        case brackets
+        case parentheses
+    }
+
+    var strategy: Strategy
+    var replacements: [String: String] = [:]
+
+    init(_ strategy: Strategy, replacements: [String: String]) {
+        self.strategy = strategy
+        self.replacements = replacements
+    }
+}
+
+extension String {
+
+    // TODO: Implement
+    func stringByReplacing(with strategy: StringReplacementStrategy) -> String {
+        let regex: String
+        switch strategy.strategy {
+        case .curlyBraces:
+            regex = "{[A-Z0-9a-z._%+-, ]*}"
+        case .brackets:
+            regex = "\\[[A-Z0-9a-z._%+-, ]*\\]"
+        case .parentheses:
+            regex = "\\([A-Z0-9a-z._%+-, ]*\\)"
+        }
+
+//        if let range = self.range(of: regex, options: .regularExpression) {
+//
+//        }
+        return self
+    }
+
+
+}
+
+

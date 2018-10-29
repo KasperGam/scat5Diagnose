@@ -17,11 +17,22 @@ class TrialViewController: UIViewController {
     @IBOutlet weak var nextTrialButton: UIButton!
     @IBOutlet weak var monthsOfYearRecallSwitch: UISwitch!
     @IBOutlet weak var previousTrialButton: UIButton!
+    @IBOutlet weak var elapsedTimeLabel: UILabel!
+    @IBOutlet weak var wordRecallCountdownView: CountdownView!
 
+    
     var assessment: SCAT5Test?
 
     var currentTrial: TrialViewModel = Trial1ViewModel()
     var currentWordList: [WordRecall]?
+
+    var elapsedSeconds: Int = 0 {
+        didSet {
+            elapsedTimeLabel.text = elapsedSeconds.valueAsTime()
+        }
+    }
+
+    var timer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +40,18 @@ class TrialViewController: UIViewController {
         assessment = manager.currentTest
         wordListTableView.dataSource = self
         previousTrialButton.isEnabled = false
+        elapsedSeconds = 0
+        timer?.invalidate()
+        timer = nil
         setupForCurrentTrial()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        elapsedSeconds = 0
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            self?.elapsedSeconds += 1
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -65,6 +87,8 @@ class TrialViewController: UIViewController {
             guard let manager = try? Container.resolve(DataManager.self) else {
                 return
             }
+            assessment?.duration = elapsedSeconds
+            timer?.invalidate()
             manager.currentTest = assessment
             manager.saveCurrentAssessment()
             performSegue(withIdentifier: "toCompletion", sender: self)
@@ -75,7 +99,13 @@ class TrialViewController: UIViewController {
         if let test = assessment as? SCAT5Flyweight {
             currentWordList = test.trialWordRecall[currentTrial.trialNumber] ?? WordRecall.getNewRecallList(from: test.memoryListUsed ?? wordList1)
         }
-        instructionLabel.text = currentTrial.trialInstruction
+        instructionLabel.text = currentTrial.trialInstruction?.format(with: assessment?.memoryListUsed, elapsedTime: elapsedSeconds)
+        wordRecallCountdownView.isHidden = !(currentTrial.showCountdown ?? false)
+        wordRecallCountdownView.countDownStart = currentTrial.countDownValue ?? 0
+        wordRecallCountdownView.reset()
+        if !wordRecallCountdownView.isHidden {
+            wordRecallCountdownView.start()
+        }
         wordListTableView.isHidden = !currentTrial.shouldUseWordList
         monthsOfYearTestView.isHidden = !currentTrial.shouldUseCalendarTest
         monthsOfYearRecallSwitch.setOn(currentTrial.calendarScore(from: assessment) > 0 ? true : false, animated: false)
@@ -119,5 +149,16 @@ extension TrialViewController: WordListTableViewCellDelegate {
             currentWordList?[index] = wordRecall
         }
     }
+}
 
+fileprivate extension String {
+    func format(with list: WordList? = nil, elapsedTime: Int = 0) -> String {
+
+        guard let list = list else { return self }
+        if let range = self.range(of: "\\{ *current_word_list *\\}", options: .regularExpression) {
+            let newStr = self.replacingCharacters(in: range, with: WordLists.listString(for: list))
+            return newStr
+        }
+        return self
+    }
 }

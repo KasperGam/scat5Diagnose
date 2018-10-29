@@ -36,36 +36,48 @@
                                     <constraint firstItem="5aJ-Pv-cTi" firstAttribute="centerY" secondItem="g8J-Dx-5Lc" secondAttribute="centerY" id="pBP-9Q-2Pi"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f70-uT-D6M">
-                                <rect key="frame" x="15" y="318.5" width="345" height="30"/>
-                                <color key="backgroundColor" red="0.1831529438" green="0.2328349948" blue="0.63351464270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f70-uT-D6M" customClass="RoundRectButton" customModule="SCAT_5_Test" customModuleProvider="target">
+                                <rect key="frame" x="15" y="316" width="345" height="35"/>
+                                <color key="backgroundColor" red="0.2919669151" green="0.89472013709999998" blue="0.69423121210000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="S9r-oh-vrs"/>
+                                    <constraint firstAttribute="height" constant="35" id="S9r-oh-vrs"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="kVl-AO-u9n"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <state key="normal" title="CHANGE PASSWORD">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                        <color key="value" red="0.2919669151" green="0.89472013709999998" blue="0.69423121210000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="ChangePasswordPressed:" destination="MYe-d2-vFP" eventType="touchUpInside" id="i66-a3-SdA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VE0-iw-hHh">
-                                <rect key="frame" x="15" y="368.5" width="345" height="30"/>
-                                <color key="backgroundColor" red="0.1831529438" green="0.2328349948" blue="0.63351464270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VE0-iw-hHh" customClass="RoundRectButton" customModule="SCAT_5_Test" customModuleProvider="target">
+                                <rect key="frame" x="15" y="371" width="345" height="35"/>
+                                <color key="backgroundColor" red="0.89555889369999997" green="0.29221290350000001" blue="0.28964364529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="2jU-jT-bnD"/>
-                                    <constraint firstAttribute="height" constant="30" id="zJr-oO-k85"/>
+                                    <constraint firstAttribute="height" constant="35" id="zJr-oO-k85"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <state key="normal" title="SIGN OUT">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                        <color key="value" red="0.89555889369999997" green="0.29221290350000001" blue="0.28964364529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signOutPressed:" destination="MYe-d2-vFP" eventType="touchUpInside" id="Xys-Q0-5vY"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.86384123560000003" green="0.95643669369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VE0-iw-hHh" firstAttribute="top" secondItem="f70-uT-D6M" secondAttribute="bottom" constant="20" id="0fx-sx-mE5"/>
                             <constraint firstItem="f70-uT-D6M" firstAttribute="leading" secondItem="AoN-xn-sIJ" secondAttribute="leading" priority="999" constant="15" id="2cN-9U-loS"/>

@@ -13,62 +13,92 @@
         <!--Admin Main Page-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Admin Main Page" id="BYZ-38-t0r" sceneMemberID="viewController">
+                <viewController title="Admin Main Page" id="BYZ-38-t0r" customClass="HomeViewController" customModule="SCAT_5_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZw-2a-JAB">
-                                <rect key="frame" x="50" y="104" width="76" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZw-2a-JAB">
+                                <rect key="frame" x="15" y="104" width="345" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="tWo-mb-FYm"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kLh-Ol-9r5">
-                                <rect key="frame" x="15" y="278.5" width="345" height="30"/>
-                                <color key="backgroundColor" red="0.1831529438" green="0.2328349948" blue="0.63351464270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kLh-Ol-9r5" customClass="RoundRectButton" customModule="SCAT_5_Test" customModuleProvider="target">
+                                <rect key="frame" x="15" y="304" width="345" height="35"/>
+                                <color key="backgroundColor" red="0.2919669151" green="0.89472013709999998" blue="0.69423121210000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="Wtb-bx-nvt"/>
-                                    <constraint firstAttribute="height" constant="30" id="X7k-fa-dKr"/>
+                                    <constraint firstAttribute="height" constant="35" id="X7k-fa-dKr"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <state key="normal" title="ADMINISTER A TEST">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                        <color key="value" red="0.2919669151" green="0.89472013709999998" blue="0.69423121210000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="uBS-ko-u2I" kind="show" id="TGT-GM-zC4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NU4-Wf-NoG">
-                                <rect key="frame" x="15" y="358.5" width="345" height="30"/>
-                                <color key="backgroundColor" red="0.1831529438" green="0.2328349948" blue="0.63351464270000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NU4-Wf-NoG" customClass="RoundRectButton" customModule="SCAT_5_Test" customModuleProvider="target">
+                                <rect key="frame" x="15" y="359" width="345" height="35"/>
+                                <color key="backgroundColor" red="0.98886066679999995" green="0.82469707729999997" blue="0.28158995510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="LAB-1V-2fC"/>
-                                    <constraint firstAttribute="height" constant="30" id="al8-FL-5Pb"/>
+                                    <constraint firstAttribute="height" constant="35" id="al8-FL-5Pb"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <state key="normal" title="SETTINGS">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                        <color key="value" red="0.98886066679999995" green="0.82469707729999997" blue="0.28158995510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="ZoS-6I-LjF" kind="show" id="eDs-86-9xD"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default Profile" highlightedImage="Default Profile" translatesAutoresizingMaskIntoConstraints="NO" id="MV3-Yv-9IT">
+                                <rect key="frame" x="112.5" y="134" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="MV3-Yv-9IT" secondAttribute="height" multiplier="1:1" id="88b-MQ-UIu"/>
+                                    <constraint firstAttribute="width" constant="150" id="q7M-0N-cRM"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.86384123560000003" green="0.95643669369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="jZw-2a-JAB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="9EU-YR-wYo"/>
+                            <constraint firstItem="jZw-2a-JAB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="121-14-Wfi"/>
+                            <constraint firstItem="jZw-2a-JAB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9Bw-Ee-s24"/>
                             <constraint firstItem="kLh-Ol-9r5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ESo-wh-V7x"/>
-                            <constraint firstItem="jZw-2a-JAB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="RjY-a4-u9t"/>
-                            <constraint firstItem="kLh-Ol-9r5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-40" id="Sfd-oD-tE2"/>
-                            <constraint firstItem="NU4-Wf-NoG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="40" id="jyH-To-0nU"/>
+                            <constraint firstItem="jZw-2a-JAB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="c9j-p7-Mg7"/>
+                            <constraint firstItem="MV3-Yv-9IT" firstAttribute="top" secondItem="jZw-2a-JAB" secondAttribute="bottom" constant="10" id="gP9-1g-1bj"/>
+                            <constraint firstItem="MV3-Yv-9IT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jdz-kM-Elu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kLh-Ol-9r5" secondAttribute="trailing" priority="999" constant="15" id="lug-Qz-SVO"/>
                             <constraint firstItem="NU4-Wf-NoG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" priority="999" constant="15" id="mkw-cs-mej"/>
                             <constraint firstItem="kLh-Ol-9r5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" priority="999" constant="15" id="oar-vZ-IJS"/>
+                            <constraint firstItem="kLh-Ol-9r5" firstAttribute="top" secondItem="MV3-Yv-9IT" secondAttribute="bottom" constant="20" id="sgv-65-5HG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jZw-2a-JAB" secondAttribute="trailing" constant="15" id="shB-PE-wMq"/>
                             <constraint firstItem="NU4-Wf-NoG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vEJ-2W-Q9l"/>
+                            <constraint firstItem="NU4-Wf-NoG" firstAttribute="top" secondItem="kLh-Ol-9r5" secondAttribute="bottom" constant="20" id="wjb-Mj-gQ3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NU4-Wf-NoG" secondAttribute="trailing" priority="999" constant="15" id="xIg-3j-591"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Admin Main Page" id="phA-rP-wKv"/>
+                    <connections>
+                        <outlet property="profileImageView" destination="MV3-Yv-9IT" id="k45-YD-vRs"/>
+                        <outlet property="userNameLabel" destination="jZw-2a-JAB" id="eTj-uM-ci6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -109,4 +139,7 @@
             <point key="canvasLocation" x="1740" y="-10"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Default Profile" width="300" height="300"/>
+    </resources>
 </document>

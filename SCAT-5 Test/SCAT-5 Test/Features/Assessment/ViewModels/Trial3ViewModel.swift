@@ -9,6 +9,10 @@
 import Foundation
 
 class Trial3ViewModel: TrialViewModel {
+    var showCountdown: Bool?
+    
+    var countDownValue: Int?
+    
     var shouldUseWordList: Bool = false
 
     var shouldUseBalanceTest: Bool = true
