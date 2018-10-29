@@ -116,6 +116,7 @@ class TrialViewController: UIViewController {
         monthsOfYearTestView.isHidden = !currentTrial.shouldUseCalendarTest
         monthsOfYearRecallSwitch.setOn(currentTrial.calendarScore(from: assessment) > 0 ? true : false, animated: false)
         legStanceTestView.isHidden = !currentTrial.shouldUseBalanceTest
+        legStanceTestView.instructionLabel.text = currentTrial.balanceInstruction
         nextTrialButton.setTitle(currentTrial.nextTrialButtonString ?? "NEXT", for: UIControl.State())
         legStanceTestView.balanceTestLabel.text = currentTrial.balanceString
         let balenceErrors = currentTrial.balenceErrors(from: assessment)

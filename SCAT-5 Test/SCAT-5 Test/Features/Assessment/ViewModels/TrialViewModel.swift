@@ -17,6 +17,7 @@ protocol TrialViewModel {
     var shouldUseCalendarTest: Bool { get set }
     var trialInstruction: String? { get set }
     var balanceString: String? { get set }
+    var balanceInstruction: String? { get set }
     var trialNumber: Int { get set }
     var nextTrialButtonString: String? { get set }
 

@@ -22,6 +22,7 @@ class Trial2ViewModel: TrialViewModel {
     var trialInstruction: String? = "What words do they remember?"
 
     var balanceString: String? = "Single Leg Stance"
+    var balanceInstruction: String? = "Athlete will stand on their non-dominant foot with hands on their hips"
 
     var trialNumber: Int = 2
 

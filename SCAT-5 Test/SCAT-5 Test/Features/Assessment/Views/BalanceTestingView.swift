@@ -13,6 +13,7 @@ class BalanceTestingView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var balanceTestLabel: UILabel!
     @IBOutlet weak var numberOfErrorsLabel: UILabel!
+    @IBOutlet weak var instructionLabel: UILabel!
 
     var errorCount: Int = 0
 
@@ -32,6 +33,7 @@ class BalanceTestingView: UIView {
         addSubview(contentView)
         contentView.frame = bounds
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        instructionLabel.text = ""
     }
 
     @IBAction func plusButtonPressed(_ sender: Any) {

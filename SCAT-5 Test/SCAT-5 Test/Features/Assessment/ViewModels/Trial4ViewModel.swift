@@ -22,6 +22,7 @@ class Trial4ViewModel: TrialViewModel {
     var trialInstruction: String? = "Which words do they still remember?"
 
     var balanceString: String?
+    var balanceInstruction: String?
 
     var trialNumber: Int = 4
 

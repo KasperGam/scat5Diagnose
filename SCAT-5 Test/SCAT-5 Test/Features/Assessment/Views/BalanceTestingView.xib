@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="balanceTestLabel" destination="ac2-ol-SqB" id="hz3-fd-Hu2"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="KDR-Qd-1dV"/>
+                <outlet property="instructionLabel" destination="bJx-k0-rR5" id="8PU-yO-OGl"/>
                 <outlet property="numberOfErrorsLabel" destination="axs-yA-lVC" id="VWJ-Ni-bnY"/>
             </connections>
         </placeholder>
@@ -22,6 +23,12 @@
             <rect key="frame" x="0.0" y="0.0" width="568" height="211"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJx-k0-rR5">
+                    <rect key="frame" x="30" y="40" width="508" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yGh-HS-PLA">
                     <rect key="frame" x="0.0" y="0.0" width="568" height="211"/>
                     <subviews>
@@ -110,9 +117,12 @@
                 </stackView>
             </subviews>
             <constraints>
+                <constraint firstItem="bJx-k0-rR5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="3NW-JK-7jg"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="yGh-HS-PLA" secondAttribute="bottom" id="Fg9-Dg-OCN"/>
                 <constraint firstItem="yGh-HS-PLA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Vje-8D-ikm"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="yGh-HS-PLA" secondAttribute="trailing" id="XKJ-QS-ekd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bJx-k0-rR5" secondAttribute="trailing" constant="30" id="YkI-r8-fL2"/>
+                <constraint firstItem="bJx-k0-rR5" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="40" id="fFb-Ot-LBY"/>
                 <constraint firstItem="yGh-HS-PLA" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="xhV-la-3cZ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
