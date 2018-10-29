@@ -109,9 +109,6 @@ class TrialViewController: UIViewController {
         wordRecallCountdownView.isHidden = !(currentTrial.showCountdown ?? false)
         wordRecallCountdownView.countDownStart = currentTrial.countDownValue ?? 0
         wordRecallCountdownView.reset()
-        if !wordRecallCountdownView.isHidden {
-            wordRecallCountdownView.start()
-        }
         wordListTableView.isHidden = !currentTrial.shouldUseWordList
         monthsOfYearTestView.isHidden = !currentTrial.shouldUseCalendarTest
         monthsOfYearRecallSwitch.setOn(currentTrial.calendarScore(from: assessment) > 0 ? true : false, animated: false)
@@ -123,7 +120,7 @@ class TrialViewController: UIViewController {
         legStanceTestView.numberOfErrorsLabel.text = String(balenceErrors)
         legStanceTestView.errorCount = balenceErrors
         wordListTableView.reloadData()
-        self.navigationItem.title = "Trial \(currentTrial.trialNumber)"
+        self.navigationItem.title = "Assessment \(currentTrial.trialNumber)"
     }
 
 }

@@ -20,7 +20,7 @@ class Trial1ViewModel: TrialViewModel {
     
     var shouldUseCalendarTest: Bool = false
     
-    var trialInstruction: String? = "User is being presented with 5 words. Monitor their balance! They have 1 minute to memorize the following: {current_word_list}."
+    var trialInstruction: String? = "Athlete is being presented with 5 words. Monitor their balance! They have 1 minute to memorize the following: {current_word_list}."
     
     var balanceString: String? = "Double Leg Stance"
     var balanceInstruction: String? = "Athlete will stand with both feet together with hands on hips"
