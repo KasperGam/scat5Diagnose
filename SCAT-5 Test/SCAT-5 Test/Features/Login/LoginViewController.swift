@@ -23,10 +23,25 @@ class LoginViewController: UIViewController {
         passwordField.tag = 1
         emailField.delegate = self
         passwordField.delegate = self
+
+        let profileImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
+        profileImageView.image = UIImage(named: "profileIcon")
+        profileImageView.contentMode = .scaleAspectFit
+
+        emailField.leftView = profileImageView
+        emailField.leftViewMode = .unlessEditing
+
+        let lockImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        lockImageView.image = UIImage(named: "lockIcon")
+        passwordField.leftView = lockImageView
+        passwordField.leftViewMode = .unlessEditing
+
         auth = Auth.auth()
         if let keychain = try? Container.resolve(KeychainManager.self) {
             emailField.text = keychain.savedUserEmail()
             passwordField.text = keychain.savedUserPassword()
+            emailField.leftViewMode = .never
+            passwordField.leftViewMode = .never
         }
         updateLoginButton()
     }
@@ -37,6 +52,16 @@ class LoginViewController: UIViewController {
 
     @IBAction func editingChanged(_ sender: Any) {
         updateLoginButton()
+        if let email = emailField.text, !email.isEmpty {
+            emailField.leftViewMode = .never
+        } else {
+            emailField.leftViewMode = .unlessEditing
+        }
+        if let pass = passwordField.text, !pass.isEmpty {
+            passwordField.leftViewMode = .never
+        } else {
+            passwordField.leftViewMode = .unlessEditing
+        }
     }
 
     @IBAction func dismissKeyboard(_ sender: Any) {
