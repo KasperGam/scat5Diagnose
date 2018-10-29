@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		25C81B6A72B122F448EE0BBB /* Pods_SCAT_5_TestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39C6E6FC4D0015E5F11980AD /* Pods_SCAT_5_TestTests.framework */; };
 		3CAFCBFB71BA1572D091671C /* Pods_SCAT_5_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7789FA66280A50B0AB916451 /* Pods_SCAT_5_Test.framework */; };
+		A70FF103218758DB002A106B /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70FF102218758DB002A106B /* UITextFieldExtensions.swift */; };
 		A73D89C921744D4C0008E00B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D89C821744D4C0008E00B /* AppDelegate.swift */; };
 		A73D89CE21744D4C0008E00B /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A73D89CC21744D4C0008E00B /* Home.storyboard */; };
 		A73D89D121744D4C0008E00B /* SCAT_5_Test.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A73D89CF21744D4C0008E00B /* SCAT_5_Test.xcdatamodeld */; };
@@ -128,6 +129,7 @@
 		44FAA2E7870B56E9B8EBE352 /* Pods-SCAT-5 Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCAT-5 Test.release.xcconfig"; path = "Pods/Target Support Files/Pods-SCAT-5 Test/Pods-SCAT-5 Test.release.xcconfig"; sourceTree = "<group>"; };
 		723AA5783AE294EA6F7B18C7 /* Pods-SCAT-5 TestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCAT-5 TestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCAT-5 TestTests/Pods-SCAT-5 TestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7789FA66280A50B0AB916451 /* Pods_SCAT_5_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCAT_5_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A70FF102218758DB002A106B /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		A73D89C521744D4C0008E00B /* SCAT-5 Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SCAT-5 Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A73D89C821744D4C0008E00B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A73D89CD21744D4C0008E00B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
@@ -528,6 +530,7 @@
 				A761BB9521779103007E6D60 /* DateExtensions.swift */,
 				A761BB9B2177B79F007E6D60 /* UINavigationControllerExtensions.swift */,
 				A78151882180C25A00FCC6C3 /* NumericExtensions.swift */,
+				A70FF102218758DB002A106B /* UITextFieldExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -906,6 +909,7 @@
 				A73D8A4521744E330008E00B /* HealthCondition.swift in Sources */,
 				A79952592174573600B3BC1E /* UIColorExtensions.swift in Sources */,
 				A73D8A6021744E340008E00B /* Service.swift in Sources */,
+				A70FF103218758DB002A106B /* UITextFieldExtensions.swift in Sources */,
 				A73D8A3621744E330008E00B /* RemoteNotificationCondition.swift in Sources */,
 				A73D8A3221744E330008E00B /* FeatureManager.swift in Sources */,
 				A78151892180C25A00FCC6C3 /* NumericExtensions.swift in Sources */,

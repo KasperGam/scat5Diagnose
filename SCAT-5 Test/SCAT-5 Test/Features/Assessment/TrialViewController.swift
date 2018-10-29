@@ -40,6 +40,12 @@ class TrialViewController: UIViewController {
         assessment = manager.currentTest
         wordListTableView.dataSource = self
         previousTrialButton.isEnabled = false
+
+        // Configure buttons
+        nextTrialButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        nextTrialButton.titleLabel?.minimumScaleFactor = 0.5
+        previousTrialButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        previousTrialButton.titleLabel?.minimumScaleFactor = 0.5
         elapsedSeconds = 0
         timer?.invalidate()
         timer = nil

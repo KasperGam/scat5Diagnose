@@ -16,7 +16,7 @@ class SymptomTableViewCell: UITableViewCell {
 
     @IBOutlet weak var symptomNameLabel: UILabel!
     @IBOutlet weak var severityIndicatorLabel: UILabel!
-    @IBOutlet weak var severitySlider: UISlider!
+    @IBOutlet weak var severityControl: UISegmentedControl!
 
     var symptom: Symptom?
     weak var delegate: SymptomTableViewCellDelegate?
@@ -24,28 +24,27 @@ class SymptomTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        severityControl.selectedSegmentIndex = 0
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
         symptom = nil
-        severitySlider.setValue(0, animated: false)
+        severityControl.selectedSegmentIndex = 0
         severityIndicatorLabel.text = "0"
         symptomNameLabel.text = ""
     }
 
     func configure(for symptom: Symptom) {
-        severitySlider.setValue(Float(symptom.severity), animated: false)
+        severityControl.selectedSegmentIndex = symptom.severity
         severityIndicatorLabel.text = String(symptom.severity)
         symptomNameLabel.text = symptom.name
         self.symptom = symptom
     }
-
     @IBAction func severityChanged(_ sender: Any) {
-        let value = severitySlider.value.rounded(.toNearestOrEven)
-        severityIndicatorLabel.text = String(Int(value))
-        severitySlider.setValue(value, animated: false)
-        symptom?.severity = Int(value)
+        let value = severityControl.selectedSegmentIndex
+        severityIndicatorLabel.text = String(value)
+        symptom?.severity = value
         if let symptom = self.symptom {
             delegate?.updateSymptom(symptom)
         }

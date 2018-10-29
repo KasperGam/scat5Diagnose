@@ -7,8 +7,20 @@ import UIKit
 
 class UnderlineTextField: UITextField {
 
-    @IBInspectable var normalUnderlineColor: UIColor = .lightGray
-    @IBInspectable var selectedUnderlineColor: UIColor = .blue
+    @IBInspectable var normalUnderlineColor: UIColor = .lightGray {
+        didSet {
+            if !isEditing {
+                underlineView.backgroundColor = normalUnderlineColor
+            }
+        }
+    }
+    @IBInspectable var selectedUnderlineColor: UIColor = .blue {
+        didSet {
+            if isEditing {
+                underlineView.backgroundColor = selectedUnderlineColor
+            }
+        }
+    }
     
     private var underlineView: UIView
     
@@ -43,7 +55,7 @@ class UnderlineTextField: UITextField {
     private func commonInit() {
         underlineView = UIView(frame: CGRect(x: 0, y: 0, width: frame.width, height: 1))
         underlineView.translatesAutoresizingMaskIntoConstraints = false
-        underlineView.backgroundColor = UIColor.lightGray
+        underlineView.backgroundColor = normalUnderlineColor
         addSubview(underlineView)
         
         underlineView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
