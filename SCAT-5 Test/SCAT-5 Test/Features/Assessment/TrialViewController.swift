@@ -103,7 +103,7 @@ class TrialViewController: UIViewController {
 
     private func setupForCurrentTrial() {
         if let test = assessment as? SCAT5Flyweight {
-            currentWordList = test.trialWordRecall[currentTrial.trialNumber] ?? WordRecall.getNewRecallList(from: test.memoryListUsed ?? wordList1)
+            currentWordList = test.trialWordRecall[currentTrial.trialNumber] ?? WordRecall.getNewRecallList(from: test.memoryListUsed ?? [])
         }
         instructionLabel.text = currentTrial.trialInstruction?.format(with: assessment?.memoryListUsed, elapsedTime: elapsedSeconds)
         wordRecallCountdownView.isHidden = !(currentTrial.showCountdown ?? false)

@@ -31,6 +31,9 @@ class StartupManager {
 
     private func setupFirebase() {
         FirebaseApp.configure()
+        if let manager = try? Container.resolve(DataManager.self) {
+            manager.refreshWordLists()
+        }
     }
 
     private func configureNavBar() {
