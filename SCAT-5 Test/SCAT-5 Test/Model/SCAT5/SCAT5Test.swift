@@ -48,23 +48,25 @@ extension SCAT5Test {
 }
 
 // MARK: - Wordlists
-
-public let wordList1: WordList = ["Elbow", "Apple", "Carpet", "Saddle", "Bubble"]
-public let wordList2: WordList = ["Candle", "Paper", "Sugar", "Sandwich", "Wagon"]
-public let wordList3: WordList = ["Baby", "Monkey", "Perfume", "Sunset", "Iron"]
-public let wordList4: WordList = ["Finger", "Penny", "Blanket", "Lemon", "Insect"]
-
 struct WordLists {
-    static func getList(for index: Int) -> WordList {
-        switch index {
-        case 0: return wordList1
-        case 1: return wordList2
-        case 2: return wordList3
-        case 3: return wordList4
-        default:
-            assertionFailure()
-            return wordList1
+    static func getRandomList() -> WordList {
+        var newList: WordList = []
+        guard let manager = try? Container.resolve(DataManager.self) else {
+            return []
         }
+
+        var words = manager.testWords
+        var count = 0
+        while count < 5 && words.count > 0 {
+            if let newWord = words.randomElement() {
+                newList.append(newWord)
+                count += 1
+                words.remove(at: words.firstIndex(of: newWord)!)
+            } else {
+                break
+            }
+        }
+        return newList
     }
 
     static func listString(for wordList: WordList) -> String {

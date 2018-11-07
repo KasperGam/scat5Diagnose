@@ -13,7 +13,6 @@ class SetupViewController: UIViewController {
     
     @IBOutlet weak var athleteImageView: UIImageView!
     @IBOutlet weak var athletePickerView: UIPickerView!
-    @IBOutlet weak var memoryListPickerView: UIPickerView!
 
     var athletes: [SCAT5Athlete] = [] {
         didSet {
@@ -25,8 +24,6 @@ class SetupViewController: UIViewController {
         super.viewDidLoad()
         athletePickerView.dataSource = self
         athletePickerView.delegate = self
-        memoryListPickerView.dataSource = self
-        memoryListPickerView.delegate = self
 
         if let manager = try? Container.resolve(DataManager.self) {
             manager.getAthletes{ [weak self] (allAthletes) in
@@ -51,18 +48,7 @@ class SetupViewController: UIViewController {
 
     private func goToNext() {
         let currentTest = SCAT5Flyweight()
-        switch memoryListPickerView.selectedRow(inComponent: 0) {
-        case 0:
-            currentTest.memoryListUsed = wordList1
-        case 1:
-            currentTest.memoryListUsed = wordList2
-        case 2:
-            currentTest.memoryListUsed = wordList3
-        case 3:
-            currentTest.memoryListUsed = wordList4
-        default:
-            currentTest.memoryListUsed = wordList1
-        }
+        currentTest.memoryListUsed = WordLists.getRandomList()
 
         let selectedRow = athletePickerView.selectedRow(inComponent: 0)
         currentTest.playerID = athletes[selectedRow].name
@@ -104,8 +90,6 @@ extension SetupViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == athletePickerView {
             return athletes.count
-        } else if pickerView == memoryListPickerView {
-            return 4
         } else {
             return 0
         }
@@ -116,9 +100,6 @@ extension SetupViewController: UIPickerViewDataSource, UIPickerViewDelegate {
             let athlete = athletes[row]
             let name = athlete.name ?? ""
             return name
-        } else if pickerView == memoryListPickerView {
-            let list = WordLists.getList(for: row)
-            return "Word List \(row + 1)\n \(WordLists.listString(for: list))"
         } else {
             return ""
         }
@@ -131,19 +112,14 @@ extension SetupViewController: UIPickerViewDataSource, UIPickerViewDelegate {
             label.text = stringFor(pickerView: pickerView, at: row)
             label.textAlignment = .center
             return label
-        } else {
-            label = UILabel(frame: CGRect(x: 0, y: 0, width: pickerView.frame.width, height: 50))
-            label.text = stringFor(pickerView: pickerView, at: row)
-            label.numberOfLines = 2
         }
-        return label
+        return UILabel()
     }
 
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         if pickerView == athletePickerView {
             return 21
-        } else {
-            return 50
         }
+        return 0
     }
 }

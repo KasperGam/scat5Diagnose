@@ -21,17 +21,19 @@ class DataManager {
 
     var currentTest: SCAT5Test?
 
-    let root = Database.database().reference()
+    var testWords: [String] = []
 
-    var db = Firestore.firestore()
+    private let root = Database.database().reference()
 
-    let cloudStoreRoot = Storage.storage(url: "gs://scat5diagnose.appspot.com").reference()
+    private var db = Firestore.firestore()
 
-    let decoder = FirebaseDecoder()
-    let encoder = FirebaseEncoder()
+    private let cloudStoreRoot = Storage.storage(url: "gs://scat5diagnose.appspot.com").reference()
 
-    let firestoreDecoder = FirestoreDecoder()
-    let firestoreEncoder = FirestoreEncoder()
+    private let decoder = FirebaseDecoder()
+    private let encoder = FirebaseEncoder()
+
+    private let firestoreDecoder = FirestoreDecoder()
+    private let firestoreEncoder = FirestoreEncoder()
 
     init() {
         encoder.dateEncodingStrategy = .formatted(Date.formatterForMMddYYYYHHmma)
@@ -112,6 +114,15 @@ extension DataManager {
                     self?.getAthletePicture(athlete)
                     athletes.append(athlete)
                 }
+            }
+            athletes = athletes.sorted { (lhs, rhs) in
+                guard
+                    let name1 = lhs.name,
+                    let name2 = rhs.name
+                else {
+                    return true
+                }
+                return name1.compare(name2) == ComparisonResult.orderedAscending
             }
             completion(athletes)
         }
@@ -217,5 +228,26 @@ extension DataManager {
                 completion(assessments)
             })
         })
+    }
+}
+// MARK: - Word Lists
+extension DataManager {
+    func refreshWordLists() {
+        let ref = db.collection("TestWords")
+        ref.getDocuments { [weak self] (snapshot, error) in
+            var words: [String] = []
+            guard
+                let documents = snapshot?.documents,
+                error == nil
+            else {
+                return
+            }
+            for document in documents {
+                if let word = document.data()["word"] as? String {
+                    words.append(word)
+                }
+            }
+            self?.testWords = words
+        }
     }
 }
