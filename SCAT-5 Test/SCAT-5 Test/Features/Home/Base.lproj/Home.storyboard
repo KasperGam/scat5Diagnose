@@ -48,7 +48,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NU4-Wf-NoG" customClass="RoundRectButton" customModule="SCAT_5_Test" customModuleProvider="target">
-                                <rect key="frame" x="15" y="359" width="345" height="35"/>
+                                <rect key="frame" x="15" y="434" width="345" height="35"/>
                                 <color key="backgroundColor" red="0.98886066679999995" green="0.82469707729999997" blue="0.28158995510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="LAB-1V-2fC"/>
@@ -74,22 +74,46 @@
                                     <constraint firstAttribute="width" constant="150" id="q7M-0N-cRM"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rv0-l1-kiy" customClass="RoundRectButton" customModule="SCAT_5_Test" customModuleProvider="target">
+                                <rect key="frame" x="15" y="369" width="345" height="35"/>
+                                <color key="backgroundColor" red="0.2919669151" green="0.89472013709999998" blue="0.69423121210000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="wIH-uL-Pmf"/>
+                                    <constraint firstAttribute="height" constant="35" id="xog-NL-UOt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="ATHLETES">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                        <color key="value" red="0.2919669151" green="0.89472013709999998" blue="0.69423121210000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="7La-nr-BeQ" kind="show" id="eg2-3z-FT4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.86384123560000003" green="0.95643669369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jZw-2a-JAB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="121-14-Wfi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rv0-l1-kiy" secondAttribute="trailing" priority="999" constant="15" id="2p7-f9-vqa"/>
                             <constraint firstItem="jZw-2a-JAB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9Bw-Ee-s24"/>
+                            <constraint firstItem="Rv0-l1-kiy" firstAttribute="top" secondItem="kLh-Ol-9r5" secondAttribute="bottom" constant="30" id="9JF-qI-S8G"/>
                             <constraint firstItem="kLh-Ol-9r5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ESo-wh-V7x"/>
+                            <constraint firstItem="Rv0-l1-kiy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" priority="999" constant="15" id="Hel-5c-qCe"/>
                             <constraint firstItem="jZw-2a-JAB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="c9j-p7-Mg7"/>
                             <constraint firstItem="MV3-Yv-9IT" firstAttribute="top" secondItem="jZw-2a-JAB" secondAttribute="bottom" constant="10" id="gP9-1g-1bj"/>
                             <constraint firstItem="MV3-Yv-9IT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jdz-kM-Elu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kLh-Ol-9r5" secondAttribute="trailing" priority="999" constant="15" id="lug-Qz-SVO"/>
+                            <constraint firstItem="Rv0-l1-kiy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ly1-pJ-eSE"/>
                             <constraint firstItem="NU4-Wf-NoG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" priority="999" constant="15" id="mkw-cs-mej"/>
                             <constraint firstItem="kLh-Ol-9r5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" priority="999" constant="15" id="oar-vZ-IJS"/>
                             <constraint firstItem="kLh-Ol-9r5" firstAttribute="top" secondItem="MV3-Yv-9IT" secondAttribute="bottom" constant="20" id="sgv-65-5HG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jZw-2a-JAB" secondAttribute="trailing" constant="15" id="shB-PE-wMq"/>
+                            <constraint firstItem="NU4-Wf-NoG" firstAttribute="top" secondItem="Rv0-l1-kiy" secondAttribute="bottom" constant="30" id="ujo-KC-mnN"/>
                             <constraint firstItem="NU4-Wf-NoG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vEJ-2W-Q9l"/>
-                            <constraint firstItem="NU4-Wf-NoG" firstAttribute="top" secondItem="kLh-Ol-9r5" secondAttribute="bottom" constant="20" id="wjb-Mj-gQ3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NU4-Wf-NoG" secondAttribute="trailing" priority="999" constant="15" id="xIg-3j-591"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -110,7 +134,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="Settings" storyboardName="Settings" id="ZoS-6I-LjF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G17-sq-ITv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1716" y="62"/>
+            <point key="canvasLocation" x="1716" y="72"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="VZg-V5-L8y">
@@ -136,7 +160,15 @@
                 <viewControllerPlaceholder storyboardIdentifier="Assessments" storyboardName="Assessments" id="uBS-ko-u2I" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7WP-CB-3GM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1740" y="-10"/>
+            <point key="canvasLocation" x="1740" y="-19"/>
+        </scene>
+        <!--TrainerHub-->
+        <scene sceneID="T5o-EV-IvW">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="TrainerHub" storyboardName="TrainerHub" id="7La-nr-BeQ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gRV-46-gIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1730" y="26"/>
         </scene>
     </scenes>
     <resources>

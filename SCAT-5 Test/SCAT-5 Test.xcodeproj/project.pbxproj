@@ -111,6 +111,10 @@
 		A799529121751E1800B3BC1E /* BalanceTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A799529021751E1800B3BC1E /* BalanceTestingView.swift */; };
 		A79952932175250F00B3BC1E /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79952922175250F00B3BC1E /* KeychainManager.swift */; };
 		A7D64E8021783562001352D4 /* AssessmentResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D64E7F21783562001352D4 /* AssessmentResultsViewController.swift */; };
+		A7DC23E821907ED900EBAEC0 /* TrainerHub.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7DC23E721907ED900EBAEC0 /* TrainerHub.storyboard */; };
+		A7DC23EA21907FA100EBAEC0 /* MyAthletesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DC23E921907FA100EBAEC0 /* MyAthletesViewController.swift */; };
+		A7DC23EC2190833100EBAEC0 /* AthleteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DC23EB2190833100EBAEC0 /* AthleteDetailViewController.swift */; };
+		A7DC23EE2190D26800EBAEC0 /* AssessmentResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DC23ED2190D26800EBAEC0 /* AssessmentResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -245,6 +249,10 @@
 		A799529021751E1800B3BC1E /* BalanceTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceTestingView.swift; sourceTree = "<group>"; };
 		A79952922175250F00B3BC1E /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		A7D64E7F21783562001352D4 /* AssessmentResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentResultsViewController.swift; sourceTree = "<group>"; };
+		A7DC23E721907ED900EBAEC0 /* TrainerHub.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrainerHub.storyboard; sourceTree = "<group>"; };
+		A7DC23E921907FA100EBAEC0 /* MyAthletesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAthletesViewController.swift; sourceTree = "<group>"; };
+		A7DC23EB2190833100EBAEC0 /* AthleteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteDetailViewController.swift; sourceTree = "<group>"; };
+		A7DC23ED2190D26800EBAEC0 /* AssessmentResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentResultViewController.swift; sourceTree = "<group>"; };
 		AC9B846D1F4A15E1EF936213 /* Pods-SCAT-5 Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCAT-5 Test.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCAT-5 Test/Pods-SCAT-5 Test.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -471,6 +479,7 @@
 		A799523C2174515A00B3BC1E /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				A7DC23E621907EBE00EBAEC0 /* Trainer Hub */,
 				A79952712174715400B3BC1E /* Assessment */,
 				A799526C21746A0B00B3BC1E /* Settings */,
 				A799526721745F1B00B3BC1E /* Home */,
@@ -635,6 +644,17 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		A7DC23E621907EBE00EBAEC0 /* Trainer Hub */ = {
+			isa = PBXGroup;
+			children = (
+				A7DC23E721907ED900EBAEC0 /* TrainerHub.storyboard */,
+				A7DC23E921907FA100EBAEC0 /* MyAthletesViewController.swift */,
+				A7DC23EB2190833100EBAEC0 /* AthleteDetailViewController.swift */,
+				A7DC23ED2190D26800EBAEC0 /* AssessmentResultViewController.swift */,
+			);
+			path = "Trainer Hub";
+			sourceTree = "<group>";
+		};
 		B5D7A0B8FCADC3B24A4C308A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -745,6 +765,7 @@
 				A73D8A5F21744E340008E00B /* LICENSE.txt in Resources */,
 				A799523F2174517A00B3BC1E /* LoginRegister.storyboard in Resources */,
 				A73D89CE21744D4C0008E00B /* Home.storyboard in Resources */,
+				A7DC23E821907ED900EBAEC0 /* TrainerHub.storyboard in Resources */,
 				A799526E21746A1900B3BC1E /* Settings.storyboard in Resources */,
 				A79952732174720600B3BC1E /* Assessments.storyboard in Resources */,
 				A799526421745DCE00B3BC1E /* GoogleService-Info.plist in Resources */,
@@ -881,6 +902,7 @@
 				A799524E2174572B00B3BC1E /* NavigationTransitionSegue.swift in Sources */,
 				A7D64E8021783562001352D4 /* AssessmentResultsViewController.swift in Sources */,
 				A73D8A3D21744E330008E00B /* NegatedCondition.swift in Sources */,
+				A7DC23EC2190833100EBAEC0 /* AthleteDetailViewController.swift in Sources */,
 				A73D8A5621744E340008E00B /* BlockObserver.swift in Sources */,
 				A73D8A5921744E340008E00B /* Operation.swift in Sources */,
 				A799527021746A2900B3BC1E /* SettingsViewController.swift in Sources */,
@@ -938,6 +960,7 @@
 				A79952552174573600B3BC1E /* StringExtensions.swift in Sources */,
 				A79952782174E77C00B3BC1E /* SymptomTableViewCell.swift in Sources */,
 				A79952852174FB2700B3BC1E /* Trial1ViewModel.swift in Sources */,
+				A7DC23EA21907FA100EBAEC0 /* MyAthletesViewController.swift in Sources */,
 				A73D8A3321744E330008E00B /* FeatureSelector.swift in Sources */,
 				A73D8A5D21744E340008E00B /* JSONParsing.swift in Sources */,
 				A73D8A3921744E330008E00B /* NSLock+Operations.swift in Sources */,
@@ -950,6 +973,7 @@
 				A79952932175250F00B3BC1E /* KeychainManager.swift in Sources */,
 				A73D8A3121744E330008E00B /* VendorIDFeatureSubject.swift in Sources */,
 				A79952802174FA3600B3BC1E /* WordListTableViewCell.swift in Sources */,
+				A7DC23EE2190D26800EBAEC0 /* AssessmentResultViewController.swift in Sources */,
 				A79952872174FF5300B3BC1E /* TrialViewModel.swift in Sources */,
 				A73D8A4A21744E340008E00B /* OperationCondition.swift in Sources */,
 			);

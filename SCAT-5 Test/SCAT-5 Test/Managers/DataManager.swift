@@ -149,7 +149,6 @@ extension DataManager {
 
     func saveCurrentAssessment() {
         guard var test = currentTest else { return }
-        // TODO - Save Test to Firebase
 
         guard var id = test.playerID?.sha256() else { return }
         guard let trainerID = test.trainerID else { return }
@@ -178,5 +177,45 @@ extension DataManager {
             ref.child(testResultID).setValue(value)
         }
         currentTest = nil
+    }
+}
+
+extension DataManager {
+
+    func getAssessments(for athlete: SCAT5AthleteFlyweight, completion: @escaping ([SCAT5Test]) -> Void) {
+        var id = athlete.hashedID()
+        id = id.uppercased()
+
+        var assessments: [SCAT5Test] = []
+        let ref = root.child("SymptomResult").child(id)
+        let testRef = root.child("TestResult").child(id)
+
+        // Get symptom results
+        ref.observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
+            guard let strongSelf = self else { return }
+            for child in snapshot.children {
+                guard let child = child as? DataSnapshot else { continue }
+                guard let symptomValue = child.value else { return }
+                if let symptoms = try? strongSelf.decoder.decode(SCAT5SymptomResult.self, from: symptomValue) {
+                    let newTest = SCAT5Flyweight(id: child.key)
+                    newTest.symptoms = symptoms.getSymptoms()
+                    assessments.append(newTest)
+                }
+            }
+
+            // Get test results
+            testRef.observeSingleEvent(of: .value, with: {(testSnapshot) in
+                for testChild in testSnapshot.children {
+                    guard let testValue = (testChild as? DataSnapshot)?.value else { return }
+                    if let test = try? strongSelf.decoder.decode(SCAT5Flyweight.self, from: testValue) {
+                        var assessment = assessments.first(where: {$0.testID == test.testID })
+                        assessment?.update(with: test)
+                    }
+                }
+
+                // Let handler handle fetched values
+                completion(assessments)
+            })
+        })
     }
 }

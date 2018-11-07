@@ -13,6 +13,7 @@ protocol SCAT5Athlete {
     var id: String? { get set }
     var name: String? { get set }
     var profileImage: UIImage? { get set }
+    var assessments: [SCAT5Test]? { get set }
 
     func dobString() -> String?
 }
@@ -30,6 +31,7 @@ class SCAT5AthleteFlyweight: SCAT5Athlete, Codable {
     var id: String?
     var name: String?
     var profileImage: UIImage?
+    var assessments: [SCAT5Test]?
 
     var formatter: DateFormatter {
         get {

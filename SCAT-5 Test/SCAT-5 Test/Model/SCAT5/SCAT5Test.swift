@@ -41,8 +41,8 @@ extension SCAT5Test {
         trial3MemoryScore = model.trial3MemoryScore ?? trial3MemoryScore
         trial4MemoryScore = model.trial4MemoryScore ?? trial4MemoryScore
         memoryListUsed = model.memoryListUsed ?? memoryListUsed
-        symptoms = model.symptoms.isEmpty ? model.symptoms : symptoms
-        trialWordRecall = model.trialWordRecall.isEmpty ? model.trialWordRecall : trialWordRecall
+        symptoms = model.symptoms.isEmpty ? symptoms : model.symptoms
+        trialWordRecall = model.trialWordRecall.isEmpty ? trialWordRecall : model.trialWordRecall
         duration = model.duration ?? duration
     }
 }
@@ -131,7 +131,11 @@ class SCAT5Flyweight: SCAT5Test, Codable {
 
     init() {}
 
-    required init(decoder: Decoder) throws {
+    init(id: String) {
+        testID = id
+    }
+
+    required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         playerID = try container.decodeIfPresent(String.self, forKey: .playerID)
         if let dateStr = try container.decodeIfPresent(String.self, forKey: .testDate) {
