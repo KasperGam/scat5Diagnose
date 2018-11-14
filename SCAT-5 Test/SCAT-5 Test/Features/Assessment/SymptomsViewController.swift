@@ -63,6 +63,4 @@ extension SymptomsViewController: SymptomTableViewCellDelegate {
         }
 
     }
-
-
 }
