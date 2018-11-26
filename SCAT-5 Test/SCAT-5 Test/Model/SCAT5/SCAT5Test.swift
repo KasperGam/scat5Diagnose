@@ -129,6 +129,7 @@ class SCAT5Flyweight: SCAT5Test, Codable {
         case trial3TandemLegErrors
         case trial4MemoryScore
         case duration = "secondsToTest"
+        case symptomResult
     }
 
     init() {}
@@ -152,6 +153,10 @@ class SCAT5Flyweight: SCAT5Test, Codable {
         trial3TandemLegErrors = try container.decodeIfPresent(Int.self, forKey: .trial3TandemLegErrors)
         trial4MemoryScore = try container.decodeIfPresent(Int.self, forKey: .trial4MemoryScore)
         duration = try container.decodeIfPresent(Int.self, forKey: .duration)
+
+        let symptomResult = try container.decodeIfPresent(SCAT5SymptomResult.self, forKey: .symptomResult)
+
+        symptoms = symptomResult?.getSymptoms() ?? []
     }
 
     func encode(to encoder: Encoder) throws {
@@ -167,6 +172,38 @@ class SCAT5Flyweight: SCAT5Test, Codable {
         try container.encodeIfPresent(trial4MemoryScore, forKey: .trial4MemoryScore)
         try container.encodeIfPresent(testDate?.getMMddYYYYHHmma(), forKey: .testDate)
         try container.encodeIfPresent(duration, forKey: .duration)
+
+        if
+            let pid = playerID,
+            let tid = trainerID {
+            let result = SCAT5SymptomResult(from: symptoms, playerID: pid, trainerID: tid)
+
+            try container.encode(result, forKey: .symptomResult)
+        }
+    }
+}
+
+extension SCAT5Test {
+    func numberOfSymptoms() -> Int {
+        return symptoms.filter({ $0.severity > 0 }).count
     }
 
+    func sevScore() -> Int {
+        var score = 0
+        symptoms.forEach({ score += $0.severity })
+
+        return score
+    }
+
+    func totalErrors() -> Int {
+        return (trial1DoubleLegErrors ?? 0) +
+            (trial2SingleLegErrors ?? 0) +
+            (trial3TandemLegErrors ?? 0)
+    }
+
+    func memoryScore() -> Int {
+        return (trial2MemoryScore ?? 0) +
+            (trial3MemoryScore ?? 0) +
+            (trial4MemoryScore ?? 0)
+    }
 }

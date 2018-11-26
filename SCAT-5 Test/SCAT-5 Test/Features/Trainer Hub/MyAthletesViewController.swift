@@ -19,10 +19,12 @@ class MyAthletesViewController: UIViewController {
         super.viewDidLoad()
         // Load data
         guard let dataManager = try? Container.resolve(DataManager.self) else { return }
-        dataManager.getAthletes{ [weak self] (athletes) in
+        guard let tid = dataManager.currentUser?.firebaseUser?.uid else { return }
+
+        dataManager.getAthletes(forTrainer: tid, completion: { [weak self] (athletes) in
             self?.athletes = athletes
             self?.tableView.reloadData()
-        }
+        })
     }
 
     override func viewDidAppear(_ animated: Bool) {

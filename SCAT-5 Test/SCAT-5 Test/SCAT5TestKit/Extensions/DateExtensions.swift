@@ -19,19 +19,19 @@ extension Date {
 
     static var formatterForMMddYYYYHHmma: DateFormatter {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM-dd-YYYY HH:mm a"
+        formatter.dateFormat = "MM-dd-yyyy HH:mm a"
         return formatter
     }
 
     func getMMddYYYYHHmma() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM-dd-YYYY HH:mm a"
+        formatter.dateFormat = "MM-dd-yyyy HH:mm a"
         return formatter.string(from: self)
     }
 
     init(fromMMddYYYYHHmma: String) {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM-dd-YYYY HH:mm a"
+        formatter.dateFormat = "MM-dd-yyyy HH:mm a"
         self.init()
         self = formatter.date(from: fromMMddYYYYHHmma) ?? self
     }

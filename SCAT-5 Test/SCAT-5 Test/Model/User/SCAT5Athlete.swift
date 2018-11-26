@@ -77,7 +77,7 @@ class SCAT5AthleteFlyweight: SCAT5Athlete, Codable {
     func hashedID() -> String {
         guard let name = name, let dob = dobString() else { return ""}
         let str = name + " " + dob
-        return str.sha256()
+        return str.sha256().uppercased()
     }
 
     func imageName() -> String {

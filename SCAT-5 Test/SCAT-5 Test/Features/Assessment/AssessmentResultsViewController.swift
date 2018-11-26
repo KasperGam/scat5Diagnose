@@ -23,6 +23,19 @@ class AssessmentResultsViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
     }
+
+    @IBAction func submitPressed(_ sender: Any) {
+        guard let dataManager = try? Container.resolve(DataManager.self) else { return }
+
+        dataManager.saveCurrentAssessment()
+    }
+
+    @IBAction func cancelPressed(_ sender: Any) {
+        guard let dataManager = try? Container.resolve(DataManager.self) else { return }
+
+        dataManager.currentTest = nil
+    }
+
 }
 
 extension AssessmentResultsViewController: UITableViewDataSource {
@@ -58,6 +71,4 @@ extension AssessmentResultsViewController: UITableViewDataSource {
         cell.textLabel?.text = "\(key): \(value)"
         return cell
     }
-
-
 }

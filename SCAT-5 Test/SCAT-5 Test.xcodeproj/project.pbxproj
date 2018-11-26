@@ -110,6 +110,8 @@
 		A799528F21751E0A00B3BC1E /* BalanceTestingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A799528E21751E0A00B3BC1E /* BalanceTestingView.xib */; };
 		A799529121751E1800B3BC1E /* BalanceTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A799529021751E1800B3BC1E /* BalanceTestingView.swift */; };
 		A79952932175250F00B3BC1E /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79952922175250F00B3BC1E /* KeychainManager.swift */; };
+		A7B2627D21ABB4FC00E69D07 /* PreviousAssessmentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7B2627C21ABB4FC00E69D07 /* PreviousAssessmentsTableViewCell.xib */; };
+		A7B2627F21ABB50900E69D07 /* PreviousAssessmentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B2627E21ABB50900E69D07 /* PreviousAssessmentsTableViewCell.swift */; };
 		A7D64E8021783562001352D4 /* AssessmentResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D64E7F21783562001352D4 /* AssessmentResultsViewController.swift */; };
 		A7DC23E821907ED900EBAEC0 /* TrainerHub.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7DC23E721907ED900EBAEC0 /* TrainerHub.storyboard */; };
 		A7DC23EA21907FA100EBAEC0 /* MyAthletesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DC23E921907FA100EBAEC0 /* MyAthletesViewController.swift */; };
@@ -248,6 +250,8 @@
 		A799528E21751E0A00B3BC1E /* BalanceTestingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BalanceTestingView.xib; sourceTree = "<group>"; };
 		A799529021751E1800B3BC1E /* BalanceTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceTestingView.swift; sourceTree = "<group>"; };
 		A79952922175250F00B3BC1E /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		A7B2627C21ABB4FC00E69D07 /* PreviousAssessmentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviousAssessmentsTableViewCell.xib; sourceTree = "<group>"; };
+		A7B2627E21ABB50900E69D07 /* PreviousAssessmentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousAssessmentsTableViewCell.swift; sourceTree = "<group>"; };
 		A7D64E7F21783562001352D4 /* AssessmentResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentResultsViewController.swift; sourceTree = "<group>"; };
 		A7DC23E721907ED900EBAEC0 /* TrainerHub.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrainerHub.storyboard; sourceTree = "<group>"; };
 		A7DC23E921907FA100EBAEC0 /* MyAthletesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAthletesViewController.swift; sourceTree = "<group>"; };
@@ -318,8 +322,8 @@
 				A7995242217456DE00B3BC1E /* SCAT5TestKit */,
 				A799523C2174515A00B3BC1E /* Features */,
 				A73D8A6A21744E3C0008E00B /* Managers */,
-				A73D89D421744D4D0008E00B /* LaunchScreen.storyboard */,
 				A73D89D721744D4D0008E00B /* Info.plist */,
+				A73D89D421744D4D0008E00B /* LaunchScreen.storyboard */,
 				A799526321745DCE00B3BC1E /* GoogleService-Info.plist */,
 				A761BB942176EDE5007E6D60 /* BridgingHeader.h */,
 			);
@@ -644,9 +648,19 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		A7B2627B21ABB24100E69D07 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A7B2627C21ABB4FC00E69D07 /* PreviousAssessmentsTableViewCell.xib */,
+				A7B2627E21ABB50900E69D07 /* PreviousAssessmentsTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		A7DC23E621907EBE00EBAEC0 /* Trainer Hub */ = {
 			isa = PBXGroup;
 			children = (
+				A7B2627B21ABB24100E69D07 /* Views */,
 				A7DC23E721907ED900EBAEC0 /* TrainerHub.storyboard */,
 				A7DC23E921907FA100EBAEC0 /* MyAthletesViewController.swift */,
 				A7DC23EB2190833100EBAEC0 /* AthleteDetailViewController.swift */,
@@ -759,6 +773,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7B2627D21ABB4FC00E69D07 /* PreviousAssessmentsTableViewCell.xib in Resources */,
 				A73D89D621744D4D0008E00B /* LaunchScreen.storyboard in Resources */,
 				A799528F21751E0A00B3BC1E /* BalanceTestingView.xib in Resources */,
 				A73D89D321744D4D0008E00B /* Assets.xcassets in Resources */,
@@ -951,6 +966,7 @@
 				A73D8A6721744E340008E00B /* ServiceRequestOperation.swift in Sources */,
 				A73D8A4F21744E340008E00B /* DependencySuccessCondition.swift in Sources */,
 				A73D8A6521744E340008E00B /* ServiceSession.swift in Sources */,
+				A7B2627F21ABB50900E69D07 /* PreviousAssessmentsTableViewCell.swift in Sources */,
 				A73D8A6321744E340008E00B /* ServiceEndpoint+JSONParsing.swift in Sources */,
 				A73D8A3A21744E330008E00B /* Dictionary+Operations.swift in Sources */,
 				A75B2A10217548750054528A /* SCAT5Athlete.swift in Sources */,

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.15" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AFj-lB-JGO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AFj-lB-JGO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.9"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +24,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="A8o-Yg-vst">
                                         <rect key="frame" x="0.0" y="40" width="375" height="510"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default Profile" highlightedImage="Default Profile" translatesAutoresizingMaskIntoConstraints="NO" id="VeF-vc-PRt">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default Profile" highlightedImage="Default Profile" translatesAutoresizingMaskIntoConstraints="NO" id="VeF-vc-PRt" customClass="CircleImageView" customModule="SCAT_5_Test" customModuleProvider="target">
                                                 <rect key="frame" x="62.5" y="0.0" width="250" height="250"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="VeF-vc-PRt" secondAttribute="height" multiplier="1:1" priority="999" id="Rad-ml-TUT"/>
@@ -151,7 +151,7 @@
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Y3r-rR-oWC">
                                                     <rect key="frame" x="0.0" y="37" width="345" height="26.5"/>
                                                     <segments>
-                                                        <segment title="0"/>
+                                                        <segment title="N/A"/>
                                                         <segment title="1"/>
                                                         <segment title="2"/>
                                                         <segment title="3"/>
@@ -493,33 +493,13 @@ October September August July June May April March February Ja
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assessment Complete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBL-wV-wUg">
-                                <rect key="frame" x="15" y="60" width="345" height="21"/>
+                                <rect key="frame" x="15" y="60" width="345" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OaC-A5-gzR" customClass="RoundRectButton" customModule="SCAT_5_Test" customModuleProvider="target">
-                                <rect key="frame" x="15" y="617" width="345" height="30"/>
-                                <color key="backgroundColor" red="0.2919669151" green="0.89472013709999998" blue="0.69423121210000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="cde-6s-OHH"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="l0X-yh-C1w"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <state key="normal" title="DONE">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
-                                        <color key="value" red="0.2919669151" green="0.89472013709999998" blue="0.69423121210000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="jpO-53-V9i" kind="custom" customClass="NavigationTransistionSegue" customModule="SCAT_5_Test" customModuleProvider="target" id="pKa-Lj-TXc"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dNb-Um-fqG">
-                                <rect key="frame" x="15" y="101" width="345" height="496"/>
+                                <rect key="frame" x="15" y="100.5" width="345" height="496.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="resultCell" id="3OK-9q-eql">
@@ -533,6 +513,52 @@ October September August July June May April March February Ja
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="x24-bb-DRn">
+                                <rect key="frame" x="15" y="617" width="345" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEg-Ia-u0j" customClass="RoundRectButton" customModule="SCAT_5_Test" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="167.5" height="30"/>
+                                        <color key="backgroundColor" red="0.89555889369999997" green="0.29221290350000001" blue="0.28964364529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="0Kp-u6-Ymo"/>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="7yS-aF-NuX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <state key="normal" title="CANCEL">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                                <color key="value" red="0.89555889369999997" green="0.29221290350000001" blue="0.28964364529999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="cancelPressed:" destination="epE-fa-wyc" eventType="touchUpInside" id="boj-9R-fhQ"/>
+                                            <segue destination="jpO-53-V9i" kind="custom" customClass="NavigationTransistionSegue" customModule="SCAT_5_Test" customModuleProvider="target" id="Wvh-E4-BR9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OaC-A5-gzR" customClass="RoundRectButton" customModule="SCAT_5_Test" customModuleProvider="target">
+                                        <rect key="frame" x="177.5" y="0.0" width="167.5" height="30"/>
+                                        <color key="backgroundColor" red="0.2919669151" green="0.89472013709999998" blue="0.69423121210000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <state key="normal" title="SUBMIT">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="defaultBackgroundColor">
+                                                <color key="value" red="0.2919669151" green="0.89472013709999998" blue="0.69423121210000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="submitPressed:" destination="epE-fa-wyc" eventType="touchUpInside" id="dGn-iu-SoU"/>
+                                            <segue destination="jpO-53-V9i" kind="custom" customClass="NavigationTransistionSegue" customModule="SCAT_5_Test" customModuleProvider="target" id="pKa-Lj-TXc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="345" id="HjY-cZ-qlV"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.86384123560000003" green="0.95643669369999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -540,14 +566,14 @@ October September August July June May April March February Ja
                             <constraint firstItem="dNb-Um-fqG" firstAttribute="leading" secondItem="w1T-qo-Oo4" secondAttribute="leading" constant="15" id="1Yh-Sh-D2j"/>
                             <constraint firstItem="dNb-Um-fqG" firstAttribute="top" secondItem="TBL-wV-wUg" secondAttribute="bottom" constant="20" id="5i9-b2-JWs"/>
                             <constraint firstItem="w1T-qo-Oo4" firstAttribute="trailing" secondItem="TBL-wV-wUg" secondAttribute="trailing" constant="15" id="7Sg-Sx-nDH"/>
-                            <constraint firstItem="w1T-qo-Oo4" firstAttribute="trailing" secondItem="OaC-A5-gzR" secondAttribute="trailing" priority="999" constant="15" id="GTV-Mg-6at"/>
-                            <constraint firstItem="w1T-qo-Oo4" firstAttribute="bottom" secondItem="OaC-A5-gzR" secondAttribute="bottom" constant="20" id="M9U-JM-8us"/>
-                            <constraint firstItem="OaC-A5-gzR" firstAttribute="centerX" secondItem="gf2-sA-jMz" secondAttribute="centerX" id="MhX-Ix-Np9"/>
+                            <constraint firstItem="x24-bb-DRn" firstAttribute="top" secondItem="dNb-Um-fqG" secondAttribute="bottom" constant="20" id="OMl-Pg-ZYE"/>
                             <constraint firstItem="TBL-wV-wUg" firstAttribute="top" secondItem="w1T-qo-Oo4" secondAttribute="top" constant="40" id="PUs-q8-8bK"/>
-                            <constraint firstItem="OaC-A5-gzR" firstAttribute="top" secondItem="dNb-Um-fqG" secondAttribute="bottom" constant="20" id="Pp0-OU-Ejo"/>
-                            <constraint firstItem="OaC-A5-gzR" firstAttribute="leading" secondItem="w1T-qo-Oo4" secondAttribute="leading" priority="999" constant="15" id="QtI-QR-1Bb"/>
+                            <constraint firstItem="x24-bb-DRn" firstAttribute="leading" secondItem="w1T-qo-Oo4" secondAttribute="leading" priority="999" constant="15" id="cHh-Jb-n1r"/>
+                            <constraint firstItem="w1T-qo-Oo4" firstAttribute="trailing" secondItem="x24-bb-DRn" secondAttribute="trailing" priority="999" constant="15" id="eej-v6-m9X"/>
                             <constraint firstItem="TBL-wV-wUg" firstAttribute="leading" secondItem="w1T-qo-Oo4" secondAttribute="leading" constant="15" id="hwl-JP-lgx"/>
+                            <constraint firstItem="w1T-qo-Oo4" firstAttribute="bottom" secondItem="x24-bb-DRn" secondAttribute="bottom" constant="20" id="qQF-Mr-EAw"/>
                             <constraint firstItem="TBL-wV-wUg" firstAttribute="centerX" secondItem="gf2-sA-jMz" secondAttribute="centerX" id="wGe-A4-UDj"/>
+                            <constraint firstItem="x24-bb-DRn" firstAttribute="centerX" secondItem="gf2-sA-jMz" secondAttribute="centerX" id="zaB-kp-Q8B"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="w1T-qo-Oo4"/>
                     </view>
@@ -557,7 +583,7 @@ October September August July June May April March February Ja
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wPi-Y6-OJf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2785" y="37"/>
+            <point key="canvasLocation" x="2784.8000000000002" y="36.431784107946029"/>
         </scene>
         <!--Home-->
         <scene sceneID="Wwk-uK-wav">
@@ -571,4 +597,7 @@ October September August July June May April March February Ja
     <resources>
         <image name="Default Profile" width="300" height="300"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="pKa-Lj-TXc"/>
+    </inferredMetricsTieBreakers>
 </document>

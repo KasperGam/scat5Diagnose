@@ -96,7 +96,6 @@ class TrialViewController: UIViewController {
             assessment?.duration = elapsedSeconds
             timer?.invalidate()
             manager.currentTest = assessment
-            manager.saveCurrentAssessment()
             performSegue(withIdentifier: "toCompletion", sender: self)
         }
     }

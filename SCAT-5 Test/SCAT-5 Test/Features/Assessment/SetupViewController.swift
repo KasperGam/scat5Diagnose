@@ -28,6 +28,7 @@ class SetupViewController: UIViewController {
         if let manager = try? Container.resolve(DataManager.self) {
             manager.getAthletes{ [weak self] (allAthletes) in
                 guard let strongSelf = self else { return }
+
                 strongSelf.athletes = allAthletes
                 if let image = strongSelf.athletes.first?.profileImage {
                     strongSelf.athleteImageView.image = image
@@ -51,7 +52,7 @@ class SetupViewController: UIViewController {
         currentTest.memoryListUsed = WordLists.getRandomList()
 
         let selectedRow = athletePickerView.selectedRow(inComponent: 0)
-        currentTest.playerID = athletes[selectedRow].name
+        currentTest.playerID = (athletes[selectedRow] as? SCAT5AthleteFlyweight)?.hashedID()
 
         if let manager = try? Container.resolve(DataManager.self) {
             currentTest.trainerID = manager.currentUser?.firebaseUser?.uid

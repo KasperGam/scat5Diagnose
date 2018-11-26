@@ -70,10 +70,10 @@ class SCAT5SymptomResult: Codable {
     var nervous = 0
     var troubleFallingAsleep = 0
 
-    var playerID: String
+    var playerID: String?
     var testDate: Date?
     var testID: String?
-    var trainerID: String
+    var trainerID: String?
 
     enum CodingKeys: String, CodingKey {
         case headache
@@ -98,10 +98,6 @@ class SCAT5SymptomResult: Codable {
         case sadness
         case nervous
         case troubleFallingAsleep
-        case playerID
-        case testDate
-        case testID
-        case trainerID
     }
     required init(from aDecoder: Decoder) throws {
         let container = try aDecoder.container(keyedBy: CodingKeys.self)
@@ -127,11 +123,6 @@ class SCAT5SymptomResult: Codable {
         sadness = try container.decode(Int.self, forKey: .sadness)
         nervous = try container.decode(Int.self, forKey: .nervous)
         troubleFallingAsleep = try container.decode(Int.self, forKey: .troubleFallingAsleep)
-        playerID = try container.decode(String.self, forKey: .playerID)
-        testID = try container.decodeIfPresent(String.self, forKey: .testID)
-        trainerID = try container.decode(String.self, forKey: .trainerID)
-        let dateStr = try container.decode(String.self, forKey: .testDate)
-        testDate = Date.formatterForMMddYYYYHHmma.date(from: dateStr)
     }
 
     init(from symptoms: [Symptom], playerID: String, trainerID: String, testID: String? = nil, testDate: Date? = nil) {

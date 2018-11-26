@@ -20,27 +20,33 @@ class ViewAssessmentResultViewController: UIViewController {
     }
 
     private func titleForRow(_ index: Int) -> String {
-        var value: Int
+        var value: String
         var key: String
         switch index {
-        case 0: value = assessment?.trial1DoubleLegErrors ?? 0
-        key = "Trial 1 Double Leg Errors"
-        case 1: value = assessment?.trial2MemoryScore ?? 0
-        key = "Trial 2 Memory Score"
-        case 2: value = assessment?.trial2SingleLegErrors ?? 0
-        key = "Trial2 Single Leg Errors"
-        case 3: value = assessment?.trial3MemoryScore ?? 0
-        key = "Trial 3 Memory Score"
-        case 4: value = assessment?.trial3TandemLegErrors ?? 0
-        key = "Trial 3 Tandem Leg Errors"
-        case 5: value = assessment?.trial4MemoryScore ?? 0
-        key = "Trial 4 Memory Score"
-        case 6: value = assessment?.duration ?? 0
-        key = "Assessment duration (s)"
+        case 0: value = assessment?.testDate?.getMMddYYYYHHmma() ?? ""
+            key = "Date of Assessment"
+        case 1: value = String(assessment?.duration ?? 0)
+            key = "Assessment duration (s)"
+        case 2: value = String(assessment?.numberOfSymptoms() ?? 0) + " of 22"
+            key = "Total # of symptoms"
+        case 3: value = String(assessment?.sevScore() ?? 0) + " of 132"
+            key = "Symptom Severity Score"
+        case 4: value = String(assessment?.trial1DoubleLegErrors ?? 0)
+            key = "Double Leg Errors"
+        case 5: value = String(assessment?.trial2SingleLegErrors ?? 0)
+            key = "Single Leg Errors"
+        case 6: value = String(assessment?.trial3TandemLegErrors ?? 0)
+            key = "Tandem Leg Errors"
+        case 7: value = String(assessment?.trial2MemoryScore ?? 0) + " of 5"
+            key = "Short Term Memory Score"
+        case 8: value = String(assessment?.trial3MemoryScore ?? 0) + " of 1"
+            key = "Month Memory Score"
+        case 9: value = String(assessment?.trial4MemoryScore ?? 0) + " of 5"
+            key = "Long Term Memory Score"
         default:
-            let symptom = assessment?.symptoms[index - 7]
+            let symptom = assessment?.symptoms[index - 10]
             key = symptom?.name ?? ""
-            value = symptom?.severity ?? 0
+            value = String(symptom?.severity ?? 0)
         }
         return "\(key): \(value)"
     }
@@ -54,7 +60,7 @@ extension ViewAssessmentResultViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (assessment?.symptoms.count ?? 0) + 7
+        return (assessment?.numberOfSymptoms() ?? 0) + 10
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

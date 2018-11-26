@@ -28,7 +28,16 @@ class AthleteDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        previousAssessmentsTableView.register(UINib(nibName: "PreviousAssessmentsTableViewCell", bundle: nil), forCellReuseIdentifier: "PreviousAssessmentsTableViewCell")
         setupForAthlete()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let selected = previousAssessmentsTableView.indexPathForSelectedRow {
+            previousAssessmentsTableView.deselectRow(at: selected, animated: false)
+        }
     }
 
     private func setupForAthlete() {
@@ -44,14 +53,16 @@ class AthleteDetailViewController: UIViewController {
             }
         })
 
-        dataManager.getAssessments(for: athlete, completion: {[weak self] (tests) in
+        guard let trainerID = dataManager.currentUser?.firebaseUser?.uid else { return }
+
+        dataManager.getAssessments(for: athlete, andTrainer: trainerID, completion: {[weak self] (tests) in
             self?.assessments = tests
         })
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let detailVC = segue.destination as? AssessmentResultsViewController {
-            detailVC.assessment = selectedAssessment
+        if let detailVC = segue.destination as? ViewAssessmentResultViewController {
+            detailVC.assessment = selectedAssessment as? SCAT5Flyweight
         }
     }
 
@@ -73,11 +84,11 @@ extension AthleteDetailViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if assessments.count > 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "PreviousAssessmentsCell") else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "PreviousAssessmentsTableViewCell", for: indexPath) as? PreviousAssessmentsTableViewCell else {
                 assertionFailure()
                 return UITableViewCell()
             }
-            cell.textLabel?.text = assessments[indexPath.row].testDate?.getMMddYYYYHHmma()
+            cell.update(with: assessments[indexPath.row])
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "PreviousAssessmentsCell") else {

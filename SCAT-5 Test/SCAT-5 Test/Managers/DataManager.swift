@@ -128,6 +128,28 @@ extension DataManager {
         }
     }
 
+    func getAthletes(forTrainer trainerID: String, completion: @escaping ([SCAT5Athlete]) -> Void) {
+        getAthletes(completion: {[weak self] athletes in
+            guard let strongSelf = self else { return }
+
+            var userAthletes: [SCAT5Athlete] = []
+            let teamID = "georgiatech"
+
+            let ref = strongSelf.root.child(teamID).child(trainerID)
+
+            ref.observe(.value, with: { snapshot in
+                for child in snapshot.children {
+                    guard let id = (child as? DataSnapshot)?.key else { continue }
+
+                    if let athlete = athletes.first(where: {($0 as? SCAT5AthleteFlyweight)?.hashedID() == id}) {
+                        userAthletes.append(athlete)
+                    }
+                }
+                completion(userAthletes)
+            })
+        })
+    }
+
     func addAthlete(athlete: SCAT5Athlete) {
         var athleteFlyweight = SCAT5AthleteFlyweight()
         athleteFlyweight.update(with: athlete)
@@ -161,23 +183,18 @@ extension DataManager {
     func saveCurrentAssessment() {
         guard var test = currentTest else { return }
 
-        guard var id = test.playerID?.sha256() else { return }
+        guard var id = test.playerID else { return }
         guard let trainerID = test.trainerID else { return }
         id = id.uppercased()
         test.playerID = id
 
-        var ref = root.child("SymptomResult").child(id)
+        // TODO: Allow multiple teams
+        let teamID = "georgiatech"
+
+        let ref = root.child(teamID).child(trainerID).child(id)
         let now = Date.currentTimeInCurrentTimeZone()
 
-        let symptomResultID = ref.childByAutoId().key!
-        let symptomResult = SCAT5SymptomResult(from: test.symptoms, playerID: id, trainerID: trainerID, testID: symptomResultID, testDate: now)
-
-        if let value = try? encoder.encode(symptomResult) {
-            ref.child(symptomResultID).setValue(value)
-        }
-
-        ref = root.child("TestResult").child(id)
-        let testResultID = symptomResultID
+        let testResultID = ref.childByAutoId().key!
 
         test.testDate = now
         test.testID = testResultID
@@ -193,40 +210,27 @@ extension DataManager {
 
 extension DataManager {
 
-    func getAssessments(for athlete: SCAT5AthleteFlyweight, completion: @escaping ([SCAT5Test]) -> Void) {
+    func getAssessments(for athlete: SCAT5AthleteFlyweight, andTrainer trainerID: String, completion: @escaping ([SCAT5Test]) -> Void) {
         var id = athlete.hashedID()
         id = id.uppercased()
 
+        let teamID = "georgiatech"
+
         var assessments: [SCAT5Test] = []
-        let ref = root.child("SymptomResult").child(id)
-        let testRef = root.child("TestResult").child(id)
+        let ref = root.child(teamID).child(trainerID).child(id)
 
         // Get symptom results
         ref.observeSingleEvent(of: .value, with: { [weak self] (snapshot) in
-            guard let strongSelf = self else { return }
-            for child in snapshot.children {
-                guard let child = child as? DataSnapshot else { continue }
-                guard let symptomValue = child.value else { return }
-                if let symptoms = try? strongSelf.decoder.decode(SCAT5SymptomResult.self, from: symptomValue) {
-                    let newTest = SCAT5Flyweight(id: child.key)
-                    newTest.symptoms = symptoms.getSymptoms()
-                    assessments.append(newTest)
+            for testChild in snapshot.children {
+                guard let strongSelf = self else { return }
+                guard let testValue = (testChild as? DataSnapshot)?.value else { continue }
+
+                if let test = try? strongSelf.decoder.decode(SCAT5Flyweight.self, from: testValue) {
+                    assessments.append(test)
                 }
             }
 
-            // Get test results
-            testRef.observeSingleEvent(of: .value, with: {(testSnapshot) in
-                for testChild in testSnapshot.children {
-                    guard let testValue = (testChild as? DataSnapshot)?.value else { return }
-                    if let test = try? strongSelf.decoder.decode(SCAT5Flyweight.self, from: testValue) {
-                        var assessment = assessments.first(where: {$0.testID == test.testID })
-                        assessment?.update(with: test)
-                    }
-                }
-
-                // Let handler handle fetched values
-                completion(assessments)
-            })
+            completion(assessments)
         })
     }
 }
